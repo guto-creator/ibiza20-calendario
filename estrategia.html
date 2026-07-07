@@ -1,0 +1,757 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ibiza 20 — Estratégia de Lançamento · As Últimas 9</title>
+<style>
+  :root {
+    --terra-dark:#5C2218; --terra-mid:#8B3A2A; --terra-light:#C4694A;
+    --creme:#FAF5EE; --dourado:#C9963A; --escuro:#1C1008;
+    --ok:#2EA84B; --warn:#C05621; --info:#4A6EC4;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{font-family:'Segoe UI',Arial,sans-serif;background:#F4EFE8;color:#1C1008;line-height:1.65}
+
+  .topnav{position:sticky;top:0;z-index:100;background:var(--escuro);display:flex;gap:0;overflow-x:auto;padding:0 16px;box-shadow:0 2px 12px rgba(0,0,0,.35)}
+  .topnav a{color:#bbb;text-decoration:none;font-size:12.5px;font-weight:600;padding:13px 13px;white-space:nowrap;border-bottom:3px solid transparent}
+  .topnav a:hover{color:var(--creme)}
+  .topnav a.hot{color:var(--dourado)}
+
+  .hero{background:linear-gradient(160deg,#1C1008 0%,#5C2218 100%);color:var(--creme);padding:56px 24px 48px;text-align:center}
+  .hero .eyebrow{font-size:12px;letter-spacing:3px;text-transform:uppercase;color:var(--dourado);margin-bottom:14px}
+  .hero h1{font-size:clamp(28px,5vw,44px);font-weight:800;letter-spacing:.5px}
+  .hero .sub{max-width:760px;margin:16px auto 0;font-size:15.5px;color:#e8ddce}
+  .hero .stamp{display:inline-block;margin-top:22px;border:1px solid var(--dourado);color:var(--dourado);border-radius:30px;padding:7px 18px;font-size:12px;letter-spacing:1.5px;text-transform:uppercase}
+
+  .wrap{max-width:1060px;margin:0 auto;padding:32px 20px 80px}
+  section{margin-top:54px;scroll-margin-top:64px}
+  .sec-tag{font-size:11px;letter-spacing:2.5px;text-transform:uppercase;color:var(--terra-mid);font-weight:700}
+  h2{font-size:26px;color:var(--terra-dark);margin:6px 0 6px}
+  .sec-lead{color:#555;font-size:14.5px;max-width:840px;margin-bottom:22px}
+  h3{font-size:16px;color:var(--terra-dark);margin:26px 0 10px}
+
+  .card{background:#fff;border-radius:12px;padding:20px 22px;border:1px solid #e7dccf;box-shadow:0 1px 4px rgba(0,0,0,.05);margin-bottom:16px}
+  .card.gold{border-left:5px solid var(--dourado)}
+  .card.red{border-left:5px solid var(--warn)}
+  .card.green{border-left:5px solid var(--ok)}
+  .card.blue{border-left:5px solid var(--info)}
+
+  .grid2{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:16px}
+  .grid3{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:14px}
+
+  .kpi{background:var(--escuro);color:#fff;border-radius:12px;padding:16px;text-align:center}
+  .kpi .n{font-size:26px;font-weight:800;color:var(--dourado)}
+  .kpi .l{font-size:11.5px;color:#cbb;margin-top:4px;letter-spacing:.4px}
+
+  table{width:100%;border-collapse:collapse;font-size:13.5px;background:#fff;border-radius:10px;overflow:hidden}
+  th{background:var(--terra-dark);color:var(--creme);text-align:left;padding:10px 12px;font-size:12px;letter-spacing:.6px;text-transform:uppercase}
+  td{padding:10px 12px;border-bottom:1px solid #f0e7da;vertical-align:top}
+  tr:last-child td{border-bottom:none}
+  tr:nth-child(even) td{background:#FBF7F0}
+  .tnum{text-align:right;font-variant-numeric:tabular-nums;white-space:nowrap}
+
+  .pill{display:inline-block;font-size:11px;font-weight:700;padding:3px 10px;border-radius:20px;letter-spacing:.4px}
+  .pill.g1{background:#EAF7EE;color:#1a6e30;border:1px solid var(--ok)}
+  .pill.g2{background:#FFF6E8;color:#8a5a00;border:1px solid var(--dourado)}
+  .pill.g3{background:#FDEEE6;color:#9c3b12;border:1px solid var(--terra-light)}
+  .pill.g4{background:#F3E9E7;color:#5C2218;border:1px solid var(--terra-dark)}
+  .pill.hip{background:#EFF3FE;color:#2b4aa0;border:1px solid var(--info)}
+  .pill.dado{background:#EAF7EE;color:#1a6e30;border:1px solid var(--ok)}
+
+  .script{background:#FBF7F0;border:1px solid #ecdfc9;border-radius:10px;padding:14px 16px;font-size:13.5px;white-space:pre-wrap;margin-top:8px}
+  .script b{color:var(--terra-dark)}
+  .why{font-size:12.5px;color:#7a5b2b;background:#FFF8EA;border-left:3px solid var(--dourado);padding:8px 12px;border-radius:0 8px 8px 0;margin-top:8px}
+
+  .reel-head{display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+  .reel-num{background:var(--terra-dark);color:var(--dourado);font-weight:800;border-radius:8px;padding:4px 10px;font-size:13px}
+  .reel-meta{font-size:12px;color:#888}
+
+  .check{list-style:none;padding-left:2px}
+  .check li{padding:5px 0 5px 26px;position:relative;font-size:14px}
+  .check li::before{content:"";position:absolute;left:0;top:9px;width:14px;height:14px;border:2px solid var(--dourado);border-radius:4px}
+
+  .week{border-left:4px solid var(--terra-light);padding-left:18px;margin-bottom:26px}
+  .week h4{font-size:15.5px;color:var(--terra-dark)}
+  .week .wk-sub{font-size:12.5px;color:#888;margin-bottom:8px}
+  .week ul{padding-left:18px;font-size:13.8px}
+  .week li{margin:4px 0}
+
+  .footer{color:#998;text-align:center;font-size:12px;padding:40px 20px}
+  .footnote{font-size:12px;color:#997;margin-top:10px}
+  .conf{background:#FFF3E6;border:1px dashed var(--warn);color:#8a4a12;font-size:12.5px;border-radius:8px;padding:8px 12px;margin-top:10px}
+  a.inline{color:var(--terra-mid)}
+  @media(max-width:600px){.wrap{padding:22px 14px 60px}}
+</style>
+</head>
+<body>
+
+<nav class="topnav">
+  <a href="#tese" class="hot">1 · Tese</a>
+  <a href="#diagnostico">2 · Diagnóstico</a>
+  <a href="#publico">3 · Público</a>
+  <a href="#oferta">4 · Oferta & Escada</a>
+  <a href="#funil">5 · Funil & WhatsApp</a>
+  <a href="#conteudo">6 · Conteúdo & Copy</a>
+  <a href="#midia">7 · Mídia</a>
+  <a href="#medicao">8 · Medição</a>
+  <a href="#site">9 · Site</a>
+  <a href="#programacao" class="hot">10 · Programação</a>
+</nav>
+
+<div class="hero">
+  <div class="eyebrow">Ibiza 20 · FOR Construtora · Alfenas-MG</div>
+  <h1>AS ÚLTIMAS 9</h1>
+  <p class="sub">Estratégia completa de lançamento — fase morador. 18 unidades, 9 vendidas com reserva assinada antes de qualquer anúncio. Este documento define como as 9 restantes encontram as 9 famílias certas.</p>
+  <div class="stamp">RI registrado ✓ · Lançamento de precisão, não de volume</div>
+</div>
+
+<div class="wrap">
+
+<!-- ============ 1. TESE ============ -->
+<section id="tese">
+  <div class="sec-tag">Seção 1</div>
+  <h2>A tese: precisão, não volume</h2>
+  <p class="sec-lead">Toda a estratégia deriva de uma única leitura de mercado. Se ela estiver certa — e os dados abaixo mostram que está — cada peça de conteúdo, cada real de mídia e cada mensagem de WhatsApp obedece a esta lógica.</p>
+
+  <div class="card gold">
+    <p><strong>9 unidades premium numa cidade de ~80 mil habitantes não se vendem com lead barato de tráfego frio.</strong> Se vendem com relacionamento, alto toque e escassez real e auditável. A mídia paga entra como amplificador e motor de retargeting — não como fonte primária de volume. O mercado de alto padrão de Alfenas é raso e relacional: praticamente todo comprador potencial está a um grau de separação de alguém que já comprou.</p>
+  </div>
+
+  <h3>A matemática honesta (por que o plano antigo não fechava)</h3>
+  <div class="card">
+    <p style="font-size:14px">CPL de imóvel premium no Brasil: <strong>R$ 40–100</strong>. Conversão de lead frio → compra: <strong>1–3%</strong>. Um plano de R$ 3.185 de mídia compraria ~64 leads → <strong>~2 vendas</strong>. Para tirar 9 vendas só de tráfego frio seriam necessários R$ 15–22 mil. A resposta não é só gastar mais — é <strong>mudar a arquitetura</strong>: três frentes somando, mídia calibrada (~R$ 7.500), e a conversão fina acontecendo no relacionamento, onde a taxa não é 2%, é 30–50% por pasta.</p>
+  </div>
+
+  <div class="grid3" style="margin-top:14px">
+    <div class="kpi"><div class="n">9</div><div class="l">vendas · a meta única</div></div>
+    <div class="kpi"><div class="n">18–27</div><div class="l">pastas (2–3 por unidade)</div></div>
+    <div class="kpi"><div class="n">120–180</div><div class="l">leads qualificados · todos os canais</div></div>
+    <div class="kpi"><div class="n">R$ 7.500</div><div class="l">mídia total · Alfenas-only</div></div>
+    <div class="kpi"><div class="n">R$ 5,3 mi</div><div class="l">VGV restante aprox. (9 unid.)</div></div>
+    <div class="kpi"><div class="n">30–50%</div><div class="l">conversão pasta → venda (alto toque)</div></div>
+  </div>
+
+  <h3>As 3 frentes (rodam em paralelo, somam no mesmo funil)</h3>
+  <div class="grid3">
+    <div class="card green"><strong>Frente A — Digital</strong><br><span style="font-size:13.5px">Meta Ads + Instagram orgânico. Gera 60–90 leads qualificados e constrói a audiência quente de retargeting desde o dia 1.</span></div>
+    <div class="card gold"><strong>Frente B — Autoridade</strong><br><span style="font-size:13.5px">Edinho (38 anos de mercado), Márcio (gestor de vendas), Rafael (15 anos de carteira). Credibilidade emprestada — os dados mostram que são os únicos posts que já engajaram de verdade.</span></div>
+    <div class="card red"><strong>Frente C — Relacionamento</strong><br><span style="font-size:13.5px">Os 9 compradores da fase investidor + base + indicações. Custo ~zero, conversão altíssima. <strong>Ativa antes de qualquer anúncio.</strong></span></div>
+  </div>
+
+  <h3>O conceito criativo: "As Últimas 9"</h3>
+  <div class="card gold">
+    <p style="font-size:14.5px"><strong>Por que este conceito ganha:</strong> ele é contável, verdadeiro e vira mecânica de conteúdo. Cada reserva fechada transforma o número público — 9 vira 8, 8 vira 7 — e cada atualização é simultaneamente <em>prova social</em> ("mais uma família escolheu"), <em>escassez</em> ("sobrou menos") e <em>notícia</em> (motivo de post). A campanha se retroalimenta: vender gera conteúdo, conteúdo gera venda.</p>
+    <p style="font-size:13.5px;margin-top:10px;color:#555">Frase-mãe: <strong>"O Ibiza 20 nasceu com 18 chaves. 9 já têm dono."</strong> · Assinatura da fase morador: <strong>"Feito para quem vai viver aqui."</strong> · A linguagem de investidor (Fase Zero, SCP, rentabilidade) fica proibida em 100% das peças desta fase.</p>
+  </div>
+</section>
+
+<!-- ============ 2. DIAGNÓSTICO ============ -->
+<section id="diagnostico">
+  <div class="sec-tag">Seção 2</div>
+  <h2>Diagnóstico com dados reais</h2>
+  <p class="sec-lead">Nada aqui é estimativa. Os números vieram direto da Graph API da Meta (pipeline próprio construído no backend FOR, jul/2026) — Instagram orgânico e as duas contas de anúncio, em tempo real.</p>
+
+  <div class="grid2">
+    <div class="card red">
+      <h3 style="margin-top:0">Instagram @forconstrutora <span class="pill dado">dado real</span></h3>
+      <ul style="padding-left:18px;font-size:13.8px">
+        <li><strong>1.097 seguidores · 67 posts</strong> — perfil pequeno, mas é a vitrine que todo lead visita antes de responder.</li>
+        <li><strong>Últimos 30 posts (jan–abr/2026): ~100% linguagem de investidor.</strong> Fase Zero, FOR Capital, SCP, "seu capital", "sócio participante". Nenhum post apresenta o Ibiza 20 como lugar para morar.</li>
+        <li><strong>Engajamento real &lt; 0,5%</strong> — maioria dos posts com 0–5 curtidas e 0 comentários. Benchmark saudável de nicho: 3–6%. O algoritmo penalizou o perfil.</li>
+        <li><strong>Silêncio desde 15/abril</strong> — quase 3 meses sem publicar. O perfil precisa de reaquecimento (seeding) antes de receber tráfego pago.</li>
+        <li><strong>Os únicos posts que performaram são os depoimentos:</strong> Edinho 32 curtidas · Márcio 25 e 11 · Rafael 18. A Frente B não é aposta — é o único padrão de sucesso já comprovado no perfil.</li>
+      </ul>
+    </div>
+    <div class="card red">
+      <h3 style="margin-top:0">Meta Ads (2 contas) <span class="pill dado">dado real</span></h3>
+      <ul style="padding-left:18px;font-size:13.8px">
+        <li><strong>Conta GLGS (act_1961866597925768)</strong> é a que roda o Ibiza — campanhas "Fase 01", Edinho, Márcio, Imoarte/MIB.</li>
+        <li><strong>O erro histórico, confirmado:</strong> campanha "Fase 01" gastou R$ 488,43 com objetivo <em>Engajamento</em> — 138.759 impressões, 1.714 cliques, <strong>zero leads</strong>. O algoritmo entregou exatamente o que foi pedido: cliques baratos, não compradores.</li>
+        <li><strong>O que já funcionou:</strong> campanhas com rosto (Edinho: CTR 2,45%, CPC R$ 0,69 · Rafael/pré-lançamento: CTR 2,1%) — o dobro do CTR das campanhas genéricas. Rosto local + fala direta = o criativo vencedor comprovado desta conta.</li>
+        <li><strong>Somadas, as contas já gastaram ~R$ 5 mil</strong> em campanhas de engajamento/alcance sem estrutura de captura. Esse aprendizado está pago — não repetir.</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="card blue">
+    <h3 style="margin-top:0">O que o diagnóstico decide</h3>
+    <ul style="padding-left:18px;font-size:14px">
+      <li><strong>Limpar o perfil antes de tudo</strong> — arquivar os posts de investidor. Qualquer lead que clique num anúncio e caia num feed de SCP morre ali.</li>
+      <li><strong>Seeding orgânico obrigatório</strong> (3–5 dias de conteúdo sem CTA) antes de ligar mídia — religar o algoritmo.</li>
+      <li><strong>Toda campanha de captação nasce com objetivo LEADS</strong> — nunca mais engajamento.</li>
+      <li><strong>Rostos locais são o criativo principal</strong> — os dados provam 2× o CTR. Reels de depoimento carregam a campanha.</li>
+      <li><strong>War-room lê dados próprios em tempo real</strong> — endpoints <code>/api/marketing/*</code> já no ar (Instagram + Ads), sem depender de ferramenta paga.</li>
+    </ul>
+  </div>
+</section>
+
+<!-- ============ 3. PÚBLICO ============ -->
+<section id="publico">
+  <div class="sec-tag">Seção 3</div>
+  <h2>Público: as 4 personas de Alfenas</h2>
+  <p class="sec-lead">Alfenas: ~80 mil habitantes, polo universitário (UNIFAL, UNIFENAS), médico e de serviços. Renda premium concentrada em profissionais liberais, comerciantes, produtores e famílias de estudantes. As personas abaixo guiam ângulo de copy e segmentação — serão refinadas com o VoC dos 9 compradores assim que coletado. <span class="pill hip">hipótese até o VoC confirmar</span></p>
+
+  <table>
+    <tr><th>Persona</th><th>Dor central</th><th>Gatilho de decisão</th><th>Ângulo de copy</th><th>Unidades-alvo</th></tr>
+    <tr><td><strong>Família em upgrade</strong><br><span style="font-size:12px;color:#888">35–50 anos, 2º/3º imóvel, filhos crescendo</span></td><td>Apê atual sem área externa; casa dá trabalho demais</td><td>Ver que não existe outro garden privativo em Alfenas</td><td>Espaço + memória de família ("café de sábado no SEU jardim")</td><td>Gardens do térreo e 3Q (96–99 m²)</td></tr>
+    <tr><td><strong>Profissional liberal</strong><br><span style="font-size:12px;color:#888">Médico, dentista, advogado · 32–50</span></td><td>Tempo escasso; quer pronto, seguro e sem dor de cabeça</td><td>Seriedade da incorporação + acabamento + endereço</td><td>Status discreto + segurança jurídica ("cada etapa tem responsável")</td><td>3Q altos (202–306), varanda em balanço</td></tr>
+    <tr><td><strong>Casal maduro / downsizing</strong><br><span style="font-size:12px;color:#888">50–65 anos, casa grande demais</span></td><td>Manutenção pesada, escada, insegurança</td><td>Elevador + garden térreo + boutique de 18 (conhece os vizinhos)</td><td>Leveza ("a casa certa para esta fase da vida")</td><td>2Q (65–77 m²) e gardens térreo</td></tr>
+    <tr><td><strong>Pais de universitário</strong><br><span style="font-size:12px;color:#888">Fora de Alfenas — só orgânico/indicação</span></td><td>Aluguel jogado fora; segurança do filho</td><td>4–8 min da UNIFENAS/UNIFAL; patrimônio em vez de despesa</td><td>"Em vez de aluguel, um patrimônio a 4 minutos da faculdade"</td><td>1Q e 2Q (42–65 m²)</td></tr>
+  </table>
+
+  <div class="card" style="margin-top:16px">
+    <h3 style="margin-top:0">Segmentação de mídia (regra fixa)</h3>
+    <p style="font-size:14px"><strong>Geografia: Alfenas + raio 15 km. Nunca fora.</strong> Idade 30–55 no lead-gen (28–60 no awareness). Interesses: <strong>vazios</strong> — em cidade pequena o recorte geográfico + idade já filtra; restringir interesse só encarece. Lookalike 1% a partir dos 9 compradores + leads quando a semente passar de ~100. Excluir dos anúncios de topo quem já é lead (frequência inteligente).</p>
+  </div>
+</section>
+
+<!-- ============ 4. OFERTA & ESCADA ============ -->
+<section id="oferta">
+  <div class="sec-tag">Seção 4</div>
+  <h2>Oferta & Escada de Preço — o motor da campanha</h2>
+  <p class="sec-lead">Escassez sem mecânica é só retórica. Aqui a escassez vira matemática: o preço sobe em degraus disparados por <strong>marcos de venda</strong> (não por data), cada aviso de degrau é um gatilho de decisão, e cada mudança fica registrada — urgência 100% verdadeira e auditável.</p>
+
+  <h3>A base: tabela comercial real <span class="pill dado">confirmada pelo cliente</span></h3>
+  <div class="grid3" style="margin-bottom:14px">
+    <div class="kpi"><div class="n">R$ 10,63 mi</div><div class="l">VGV total (18 unidades)</div></div>
+    <div class="kpi"><div class="n">R$ 6.720</div><div class="l">valor do m² — âncora única em Alfenas</div></div>
+    <div class="kpi"><div class="n">10%</div><div class="l">entrada — o número que destrava a decisão</div></div>
+  </div>
+
+  <table>
+    <tr><th>Tipologia</th><th>Unidades</th><th>Área</th><th class="tnum">Preço de tabela</th><th class="tnum">Entrada (10%)</th></tr>
+    <tr><td>1Q Garden (térreo)</td><td>101</td><td>42,02 m² + garden 24 m²</td><td class="tnum">R$ 282.374</td><td class="tnum">R$ 28.237</td></tr>
+    <tr><td>2Q (Final 01)</td><td>201 · 301</td><td>65,55 m²</td><td class="tnum">R$ 440.496</td><td class="tnum">R$ 44.050</td></tr>
+    <tr><td>2Q Garden / 2Q (Final 04)</td><td>104 · 204 · 304</td><td>77,60 m² (garden 26,5 m² no térreo)</td><td class="tnum">R$ 521.472</td><td class="tnum">R$ 52.147</td></tr>
+    <tr><td>3Q (Finais 02 e 05)</td><td>102 · 105 · 202/302 · 205/305</td><td>96,98–97,39 m² (gardens 48 e 34 m² no térreo)</td><td class="tnum">R$ 651.706 – 654.461</td><td class="tnum">R$ 65.171 – 65.446</td></tr>
+    <tr><td>3Q (Finais 03 e 06)</td><td>103 · 106 · 203/303 · 206/306</td><td>98,37–99,08 m² (gardens 47,8 e 34 m² no térreo)</td><td class="tnum">R$ 661.046 – 665.818</td><td class="tnum">R$ 66.105 – 66.582</td></tr>
+  </table>
+  <div class="conf">⚠️ <strong>Confirmar com o comercial:</strong> quais 9 unidades exatas restam disponíveis. A copy usará "a partir de R$ [menor unidade disponível]" — esse número só pode ir ao ar depois desta confirmação (claim auditável).</div>
+
+  <h3>A escada: 4 gates disparados por reservas</h3>
+  <table>
+    <tr><th>Gate</th><th>Quem compra</th><th>Gatilho de abertura</th><th class="tnum">Preço</th><th>Mensagem pública</th></tr>
+    <tr><td><span class="pill g1">GATE 1 · Lançamento</span></td><td>Frente C + lista quente + primeiros leads</td><td>Abertura das reservas (pós-RI)</td><td class="tnum">Tabela cheia</td><td>"Tabela de lançamento — válida até a 3ª reserva."</td></tr>
+    <tr><td><span class="pill g2">GATE 2 · 1º degrau</span></td><td>Mercado aberto</td><td><strong>3ª reserva assinada</strong></td><td class="tnum">+2,5%</td><td>"3 famílias reservaram. A tabela subiu — e sobe de novo na 6ª."</td></tr>
+    <tr><td><span class="pill g3">GATE 3 · 2º degrau</span></td><td>Decididos tardios</td><td><strong>6ª reserva assinada</strong></td><td class="tnum">+5%</td><td>"Restam 3. Próxima atualização de tabela: agora é por unidade."</td></tr>
+    <tr><td><span class="pill g4">GATE 4 · Últimas</span></td><td>Retardatários</td><td><strong>8ª reserva</strong> (resta 1)</td><td class="tnum">+7,5% ou sob consulta</td><td>"A última unidade do Ibiza 20."</td></tr>
+  </table>
+
+  <div class="card gold" style="margin-top:14px">
+    <h3 style="margin-top:0">O argumento em reais (exemplo com o 3Q de R$ 651.706)</h3>
+    <p style="font-size:14.5px">Gate 1 → Gate 2: <strong>+R$ 16.293</strong>. Gate 1 → Gate 3: <strong>+R$ 32.585</strong>. A frase de venda escreve a si mesma: <em>"Esperar duas semanas pode custar 16 mil reais. Não é pressão — é o que acontece quando 9 unidades encontram uma cidade inteira."</em> E o degrau é sempre <strong>anunciado antes de subir</strong> — o aviso é o gatilho, e quem foi avisado não se sente enganado, se sente privilegiado.</p>
+  </div>
+
+  <div class="grid2">
+    <div class="card">
+      <h3 style="margin-top:0">Reserva & sinal</h3>
+      <ul style="padding-left:18px;font-size:14px">
+        <li><strong>Termo de Reserva + sinal:</strong> R$ 5.000 (1Q/2Q) · R$ 10.000 (3Q).</li>
+        <li>O sinal <strong>congela o preço do gate vigente</strong> e vira parte da entrada de 10% no contrato definitivo — que, com o <strong>RI já registrado em cartório</strong>, pode ser assinado em dias, não meses.</li>
+        <li>Comunicar como proteção: "Registro de Incorporação em cartório — você compra na planta com a segurança máxima que a lei oferece (Lei 4.591/64)".</li>
+        <li>Reserva não confirmada em 7 dias (docs + ficha) → libera a unidade e o próximo da fila é avisado. Fila real = urgência real.</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h3 style="margin-top:0">O sistema de PASTA (a unidade de conversão)</h3>
+      <p style="font-size:14px">Pasta = <strong>ficha de interesse assinada + documentos entregues + minuta pré-preenchida + simulação da unidade</strong>. No dia da assinatura, fechar leva 10 minutos. Meta: <strong>2–3 pastas por unidade</strong> (18–27 no total).</p>
+      <ul style="padding-left:18px;font-size:13.5px">
+        <li>Ficha: dados + unidade-alvo + forma de pagamento pretendida</li>
+        <li>Docs: RG/CPF, comprovante de renda e residência, estado civil</li>
+        <li>Minuta do Termo de Reserva pré-preenchida</li>
+        <li>Simulação impressa: tabela do gate + entrada 10% + saldo</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 5. FUNIL & WHATSAPP ============ -->
+<section id="funil">
+  <div class="sec-tag">Seção 5</div>
+  <h2>Funil & WhatsApp — onde a venda acontece de verdade</h2>
+  <p class="sec-lead">O funil não morre na captação; morre no vão entre o lead e a pasta. Regra sagrada: <strong>responder em até 1 hora</strong> (ideal &lt; 15 min) — o primeiro a responder costuma levar. Ferramenta: CRM + módulo WhatsApp do sistema FOR, com tags e SLA monitorado no war-room.</p>
+
+  <h3>O fluxo em 5 etapas</h3>
+  <table>
+    <tr><th>#</th><th>Etapa</th><th>O que acontece</th><th>Meta de taxa</th></tr>
+    <tr><td>1</td><td><strong>Captura</strong></td><td>Lead entra (form Meta / site / WhatsApp) → resposta imediata + 1ª pergunta de qualificação</td><td>SLA 1h = 100%</td></tr>
+    <tr><td>2</td><td><strong>Qualificação</strong></td><td>2–3 perguntas naturais: pra quem é · quantos quartos · horizonte de decisão</td><td>lead → qualificado ~50%</td></tr>
+    <tr><td>3</td><td><strong>Apresentação</strong></td><td>30 min, presencial ou vídeo: plantas, renders, tabela do gate vigente, simulação</td><td>qualificado → apresentação ~40%</td></tr>
+    <tr><td>4</td><td><strong>Pasta</strong></td><td>Ficha + docs + minuta + simulação — no mesmo dia da apresentação, se possível</td><td>apresentação → pasta ~50%</td></tr>
+    <tr><td>5</td><td><strong>Reserva</strong></td><td>Termo + sinal → preço congelado → celebração pública (story "faltam 8")</td><td>pasta → reserva 30–50%</td></tr>
+  </table>
+
+  <h3>Scripts prontos (adaptar o tom — nunca robô)</h3>
+  <div class="card">
+    <strong>1ª resposta (imediata, automática ou humana):</strong>
+    <div class="script">"Oi, [nome]! Aqui é o/a [atendente], da equipe do Ibiza 20 🌿 Recebi seu interesse. Pra eu te mandar exatamente o material certo: o apartamento seria pra você morar, pra sua família, ou pra alguém próximo? E você procura 1, 2 ou 3 quartos?"</div>
+    <strong style="display:block;margin-top:12px">Qualificação (na sequência natural da conversa):</strong>
+    <div class="script">"Perfeito. E você pensa em mudar ainda esse ano, ou quer garantir agora na condição de lançamento e se planejar com calma? Te pergunto porque a tabela atual vale até a 3ª reserva — depois ela sobe. Assim eu te indico a unidade certa no momento certo."</div>
+    <strong style="display:block;margin-top:12px">Agendamento da apresentação:</strong>
+    <div class="script">"O jeito certo de sentir o Ibiza é numa apresentação de 30 minutos — te mostro as plantas, os renders e a simulação exata da unidade que combina com o que você me contou (entrada de 10% e o restante direto com a construtora). Consigo [dia] às [hora], presencial ou por vídeo. Qual prefere?"</div>
+    <strong style="display:block;margin-top:12px">Cadência de follow-up (sem sumir, sem sufocar):</strong>
+    <div class="script">D+0 · resposta imediata
+D+1 · "Separei as duas plantas que mais combinam com o que você falou. Quer que eu mande por aqui?"
+D+3 · prova social: "Essa semana mais uma família reservou — ficaram [X]. Te seguro um horário?"
+D+7 · gatilho de escada: "Aviso de amigo: na 3ª reserva a tabela sobe 2,5% (uns R$ 16 mil num 3 quartos). Se estiver na dúvida, vale conhecer antes disso."
+Depois · 1×/semana com conteúdo de valor (obra, bairro, planta) — nunca só 'oi, e aí?'</div>
+  </div>
+
+  <h3>Biblioteca de objeções</h3>
+  <table>
+    <tr><th>Objeção</th><th>Contorno (curto, honesto)</th></tr>
+    <tr><td>"Está caro"</td><td>Reancorar em valor e escada: "R$ 6.720/m² com garden privativo não existe em Alfenas pra comparar. E este é o menor preço que essa unidade vai ter — o próximo degrau abre na 3ª reserva." Nunca dar desconto de largada.</td></tr>
+    <tr><td>"Vou pensar"</td><td>"Faz todo sentido. Pra você pensar com informação: te mando a simulação exata e <strong>seguro essa condição por 48h</strong>. Depois disso não consigo garantir o preço do gate." (compromisso leve + prazo real)</td></tr>
+    <tr><td>"Comprar na planta é seguro?"</td><td>"O Ibiza 20 tem <strong>Registro de Incorporação em cartório</strong> — é a proteção máxima que a lei brasileira dá a quem compra na planta (Lei 4.591/64): memorial descritivo, projeto aprovado e a obra vinculada ao registro. Te mando a certidão junto com a simulação, se quiser conferir."</td></tr>
+    <tr><td>"Prefiro esperar o lançamento"</td><td>"Quem espera o lançamento paga a tabela do gate seguinte e escolhe entre o que sobrou. Os gardens do térreo são 6 no prédio inteiro — não tem reposição."</td></tr>
+    <tr><td>"10% de entrada é muito agora"</td><td>"O sinal de R$ [5/10] mil já faz parte da entrada — você não paga duas vezes. E a entrada só completa na assinatura do contrato. Quer que eu monte a simulação do seu fluxo real?"</td></tr>
+  </table>
+
+  <div class="card blue" style="margin-top:14px">
+    <h3 style="margin-top:0">Higiene de CRM (inegociável)</h3>
+    <p style="font-size:14px">Todo lead com: fonte (meta/site/whatsapp/indicação) · intenção (morar/família/filho) · estágio (lead → qualificado → pasta → reserva) · unidade de interesse · <strong>próximo passo agendado</strong>. Indicação da Frente C ganha tag "indicação investidor" + prioridade. Lead sem próximo passo = lead morrendo.</p>
+  </div>
+</section>
+
+<!-- ============ 6. CONTEÚDO & COPY ============ -->
+<section id="conteudo">
+  <div class="sec-tag">Seção 6</div>
+  <h2>Conteúdo & Copy — o sistema completo</h2>
+  <p class="sec-lead">Regra que mata a mediocridade: <strong>cada peça carrega UM ângulo só.</strong> O erro do plano antigo era listar os mesmos 4 features em todos os reels. Aqui, 8 ângulos rotacionam pelas peças — e cada roteiro usa especificidade (número, fato, nome) no lugar de adjetivo. Frameworks: AIDA na estrutura, PAS quando o ângulo parte de uma dor.</p>
+
+  <h3>A matriz de ângulos</h3>
+  <table>
+    <tr><th>Ângulo</th><th>Ideia central</th><th>Onde brilha</th></tr>
+    <tr><td><strong>1 · Escassez real</strong></td><td>Inventário finito e insubstituível ("6 gardens no prédio inteiro")</td><td>Reels 6 e 8, posts de contador, D+7 do WhatsApp</td></tr>
+    <tr><td><strong>2 · Prova social</strong></td><td>"9 famílias compraram sem a gente anunciar nada"</td><td>Reel 4, post do Dia RI, anúncio B</td></tr>
+    <tr><td><strong>3 · Autoridade local</strong></td><td>Quem entende do mercado validou (38 anos do Edinho)</td><td>Reels 3 e 7, campanha com rosto</td></tr>
+    <tr><td><strong>4 · Lifestyle</strong></td><td>A vida dentro do espaço (café no garden, jantar na varanda)</td><td>Posts estáticos, stories, Reel 9</td></tr>
+    <tr><td><strong>5 · Contraste boutique</strong></td><td>"18 apartamentos. Não 200. De propósito."</td><td>Reel 2, carrossel</td></tr>
+    <tr><td><strong>6 · Origem / porquê</strong></td><td>A visão do fundador — por que o Ibiza existe</td><td>Carrossel Guto (opcional), Reel 1 alternativo</td></tr>
+    <tr><td><strong>7 · Segurança jurídica</strong></td><td>"Cada tijolo tem projeto, cada etapa tem responsável"</td><td>FAQ, objeções, Reel 7</td></tr>
+    <tr><td><strong>8 · Urgência-conselho</strong></td><td>De quem já viu o cliente perder a unidade</td><td>Reel 6, D+7, fase de gates</td></tr>
+  </table>
+
+  <h3 style="margin-top:34px">Os 10 Reels — roteiros v2 completos</h3>
+
+  <div class="card">
+    <div class="reel-head"><span class="reel-num">REEL 1</span><strong>Márcio — A abertura</strong><span class="reel-meta">45s · publicar no Dia D (13/jul) · ângulo: autoridade seletiva + curiosidade</span></div>
+    <div class="script"><b>GANCHO (0–3s):</b> "Já recusei três lançamentos em Alfenas. Esse aqui eu não recusei — e vou te explicar por quê em 40 segundos."
+
+<b>DESENVOLVIMENTO (3–38s):</b> "Meu nome é Márcio, gestor de vendas do Ibiza 20. Quando me apresentaram o projeto, a primeira coisa que perguntei foi: o que isso tem que Alfenas não tem? A resposta tava na planta. Garden privativo de verdade — até 48 metros quadrados, o quintal É do apartamento, não é área comum. Varanda gourmet com forro de madeira em todos os andares. E o número que muda tudo: dezoito unidades. Não duzentas. Dezoito. Antes de qualquer anúncio, 9 famílias já tinham comprado. Você nunca viu esse prédio num outdoor — e metade dele já tem dono. As últimas 9 chegam agora, para quem vai MORAR aqui."
+
+<b>CTA (38–45s):</b> "As plantas e a tabela estão no link da bio. Ou me chama direto — sou eu que respondo."</div>
+    <div class="why">Por que converte: "recusei três" cria tensão e prova seletividade em 3 segundos (ninguém rola o feed no meio de uma confissão). "Você nunca viu esse prédio num outdoor — e metade já tem dono" transforma o silêncio de mídia em prova social. Um ângulo, um CTA.</div>
+    <p style="font-size:13px;margin-top:8px"><strong>Legenda:</strong> Já recusei três lançamentos em Alfenas. Esse eu não recusei. 🔑 9 famílias compraram antes de qualquer anúncio — as últimas 9 unidades chegam agora, para quem vai morar. Plantas e tabela → link na bio · #Ibiza20 #Alfenas #AsUltimas9<br>
+    <strong>Produção:</strong> exterior do terreno ou render ao fundo · câmera fixa próxima · luz natural · legenda automática · social casual.</p>
+  </div>
+
+  <div class="card">
+    <div class="reel-head"><span class="reel-num">REEL 2</span><strong>Márcio — Boutique de propósito</strong><span class="reel-meta">42s · S3 · ângulo: contraste</span></div>
+    <div class="script"><b>GANCHO (0–3s):</b> "Tem prédio de duzentos apartamentos sendo lançado por aí. O Ibiza tem dezoito. E isso é de propósito."
+
+<b>DESENVOLVIMENTO (3–35s):</b> "Pensa comigo: num prédio de duzentos, você divide elevador, garagem e paciência com duzentas famílias. No Ibiza são dezoito — três andares, um elevador que é seu de verdade, uma vaga por unidade com infraestrutura pra carro elétrico. Você vai conhecer seus vizinhos pelo nome. Em cidade nenhuma isso é comum. Em Alfenas, é inédito. Boutique não é palavra de marketing: é uma decisão de projeto que muda como você vive todos os dias."
+
+<b>CTA (35–42s):</b> "Quer ver a planta do seu? Link na bio ou mensagem direta."</div>
+    <div class="why">Por que converte: o contraste 200 vs. 18 é instantaneamente visual e posiciona contra toda a concorrência genérica sem citar ninguém. Fecha com benefício vivido ("conhecer os vizinhos pelo nome"), não com feature.</div>
+  </div>
+
+  <div class="card">
+    <div class="reel-head"><span class="reel-num">REEL 3</span><strong>Edinho — 38 anos reconhecem</strong><span class="reel-meta">48s · S2 · ângulo: autoridade local <span class="pill dado">maior engajamento já medido do perfil: 32 curtidas</span></span></div>
+    <div class="script"><b>GANCHO (0–3s):</b> "Trinta e oito anos vendendo imóvel em Alfenas. Teve coisa que eu nunca tinha visto aqui. Até agora."
+
+<b>DESENVOLVIMENTO (3–40s):</b> "Meu nome é Edinho, da Imoarte. Nesses 38 anos eu vi lançamento de todo tipo — bom, ruim, prometido e não entregue. Quando a FOR me mostrou o Ibiza 20, eu olhei com o pé atrás, como sempre olho. Aí eu vi o garden de 48 metros no térreo. Vi a varanda com forro de madeira. Vi a documentação — porque produto bonito sem papel em ordem eu não indico. E vi que eram só dezoito unidades num bairro que eu conheço palmo a palmo, o Montserrat. Eu indico o Ibiza porque indicaria pra minha família. Esse é o meu critério há 38 anos, e não vou mudar agora."
+
+<b>CTA (40–48s):</b> "Quer conhecer? Me chama, ou fala com a equipe FOR. O link tá na bio."</div>
+    <div class="why">Por que converte: os dados do perfil provam que Edinho é o rosto que mais engaja. "Olhei com o pé atrás" dá credibilidade ao elogio (quem duvida e se convence vale 10× quem só elogia). O critério-família fecha a confiança.</div>
+  </div>
+
+  <div class="card">
+    <div class="reel-head"><span class="reel-num">REEL 4</span><strong>Márcio — As 9 invisíveis</strong><span class="reel-meta">45s · S2 · ângulo: prova social</span></div>
+    <div class="script"><b>GANCHO (0–3s):</b> "9 famílias compraram um apartamento que nunca apareceu num anúncio. Como é que isso acontece?"
+
+<b>DESENVOLVIMENTO (3–38s):</b> "Não foi sorte e não foi desconto. Foi o produto certo chegando primeiro nas pessoas que sabem avaliar. Antes do lançamento público, o Ibiza 20 foi apresentado de forma reservada — e metade do prédio foi reservado ali, com contrato assinado. Quem pesquisa imóvel em Alfenas sabe: garden privativo de até 48 metros, 18 unidades, no Montserrat — não tem segundo igual pra comparar. Quando não tem comparação, quem entende decide rápido. Agora é a vez do mercado aberto: as últimas 9, para quem vai morar."
+
+<b>CTA (38–45s):</b> "A tabela de lançamento vale até a terceira reserva. Link na bio."</div>
+    <div class="why">Por que converte: transforma o fato real (9 vendidas sem anúncio) em mistério + validação. E o CTA já planta a escada de preço — urgência com data-mecânica, não com adjetivo.</div>
+  </div>
+
+  <div class="card">
+    <div class="reel-head"><span class="reel-num">REEL 5</span><strong>Comprador #1 — depoimento</strong><span class="reel-meta">45s · S5 · ângulo: prova social vivida · ⚠️ ZERO linguagem de investimento</span></div>
+    <div class="script"><b>GANCHO (0–3s):</b> "Eu comprei no Ibiza 20 antes de todo mundo. Vou te contar o que me convenceu."
+
+<b>ROTEIRO GUIADO (3–38s)</b> — a pessoa fala com as próprias palavras sobre 2 destes pontos (não todos):
+→ o que viu na planta que não achou em outro lugar
+→ o bairro Montserrat / a localização
+→ a seriedade da FOR (documentação, atendimento)
+→ pra quem é a unidade (família, futuro)
+
+<b>VALIDAÇÃO (38–45s):</b> "Se você tá pensando em morar aqui — a análise eu já fiz. E assinei."</div>
+    <div class="why">Por que converte: comprador real é a única prova que não parece marketing. Direção: pedir 2 pontos, não um discurso — depoimento curto e específico bate depoimento longo e genérico. Na edição, cortar qualquer menção a retorno/investimento.</div>
+  </div>
+
+  <div class="card">
+    <div class="reel-head"><span class="reel-num">REEL 6</span><strong>Edinho — o conselho</strong><span class="reel-meta">42s · S4 · ângulo: urgência-conselho</span></div>
+    <div class="script"><b>GANCHO (0–3s):</b> "Em 38 anos eu vi esse filme mil vezes: o cliente fala 'semana que vem eu decido'. E a unidade dele vai embora."
+
+<b>DESENVOLVIMENTO (3–35s):</b> "Não tô te apressando — tô te contando o que acontece. No Ibiza são 6 apartamentos com garden, todos no térreo. É o que sai primeiro, sempre, em qualquer lançamento — porque não tem como construir térreo depois. Metade do prédio já foi antes do anúncio. Sobraram 9 no total. Eu não peço pra você decidir hoje. Peço pra você CONHECER hoje — porque decidir com calma é um direito seu, mas escolher entre o que sobrou é o preço de quem conheceu tarde."
+
+<b>CTA (35–42s):</b> "Me chama. Te mostro as plantas sem compromisso — e você decide no seu tempo."</div>
+    <div class="why">Por que converte: urgência dita por veterano soa como conselho de pai, não pressão de vendedor. "Conhecer hoje ≠ decidir hoje" desarma a defesa e ainda assim acelera. Fato insubstituível (térreo) sustenta tudo.</div>
+  </div>
+
+  <div class="card">
+    <div class="reel-head"><span class="reel-num">REEL 7</span><strong>Rafael — reputação em jogo</strong><span class="reel-meta">42s · S3 · ângulo: autoridade + segurança jurídica</span></div>
+    <div class="script"><b>GANCHO (0–3s):</b> "Corretor que indica errado uma vez paga por isso a carreira inteira. Por isso eu escolho o que indico."
+
+<b>DESENVOLVIMENTO (3–35s):</b> "Rafael Reis, 15 anos de mercado aqui em Alfenas. Antes de aceitar trabalhar com o Ibiza 20, eu fiz o que faço com todo lançamento: fui atrás do papel. Registro, projeto aprovado, quem assina a estrutura, quem responde pela obra. Tava tudo lá — cada etapa com responsável, cada promessa com documento. Aí olhei o produto: garden privativo, varanda gourmet, 18 unidades no Montserrat. Produto bom com papel em ordem é raro. Os dois juntos, em Alfenas, eu nunca tinha visto."
+
+<b>CTA (35–42s):</b> "Dúvida sobre documentação, planta, condição? Me pergunta. Respondo tudo."</div>
+    <div class="why">Por que converte: junta dois ângulos que se reforçam (reputação pessoal + papel em ordem) e responde a objeção jurídica sem ela ter sido feita. CTA de perguntas abre conversa — ideal pro WhatsApp.</div>
+  </div>
+
+  <div class="card">
+    <div class="reel-head"><span class="reel-num">REEL 8</span><strong>Márcio — convite individual</strong><span class="reel-meta">44s · S6 · ângulo: escassez + conveniência</span></div>
+    <div class="script"><b>GANCHO (0–4s):</b> "A partir de [DATA], as últimas 9 unidades do Ibiza 20 abrem pra reserva. E eu quero te mostrar a sua antes disso."
+
+<b>DESENVOLVIMENTO (4–32s):</b> "Essa semana eu tô fazendo apresentações individuais — 30 minutos, presencial ou por vídeo. Você vê as plantas, os renders e sai com a simulação exata da sua unidade: entrada de 10%, sinal que já faz parte dela, e o preço travado da tabela de lançamento. Sem compromisso e sem plateia — é você, eu, e a decisão mais importante: qual das 9 combina com a sua vida. As com garden vão primeiro. Sempre vão."
+
+<b>URGÊNCIA (32–38s):</b> "Na terceira reserva a tabela sobe. Quem apresentar antes, trava o preço de hoje."
+
+<b>CTA (38–44s):</b> "Agenda pelo link na bio ou me chama direto. Agenda da semana já tá aberta."</div>
+    <div class="why">Por que converte: oferta concreta (30 min + simulação + preço travado) com custo zero para o lead. A escada aparece como benefício de quem age ("trava o preço"), não como ameaça.</div>
+  </div>
+
+  <div class="card">
+    <div class="reel-head"><span class="reel-num">REEL 9</span><strong>Voz-off cinematográfico</strong><span class="reel-meta">40–50s · S6 · ângulo: lifestyle · renders + trilha + narração (locutor ou voz do Guto)</span></div>
+    <div class="script">[render do garden ao amanhecer]
+<b>"Existe um lugar em Alfenas onde o sábado começa no seu próprio jardim."</b>
+
+[render da varanda ao entardecer, mesa posta]
+<b>"Onde o jantar de sexta tem forro de madeira e céu aberto."</b>
+
+[render da fachada, entardecer]
+<b>"18 famílias. Cada uma com o seu. Nada dividido que não devesse ser."</b>
+
+[cartela: AS ÚLTIMAS 9 · tipografia dourada sobre fundo escuro]
+<b>"9 já escolheram. As últimas 9 abrem em [DATA]."</b>
+
+[cartela final: logo + ibiza20.com.br]
+
+<b>Produção:</b> cortes lentos · trilha instrumental suave · SEM legenda automática (o silêncio faz parte) · tipografia serifada elegante.</div>
+    <div class="why">Por que converte: é a peça de desejo puro — roda no retargeting (C4) para leads que já conhecem o racional e precisam do empurrão emocional. Não compete com os reels de rosto; completa.</div>
+  </div>
+
+  <div class="card">
+    <div class="reel-head"><span class="reel-num">REEL 10</span><strong>Comprador #2 — segundo depoimento</strong><span class="reel-meta">45s · S7 · ângulo: prova social (aspecto diferente do Reel 5) · ⚠️ ZERO investimento</span></div>
+    <div class="script"><b>GANCHO (0–3s):</b> "Todo mundo me perguntou por que eu não esperei o lançamento. Simples: quem espera, escolhe depois dos outros."
+
+<b>ROTEIRO GUIADO (3–38s)</b> — focar num aspecto DIFERENTE do Reel 5 (se o #1 falou de produto, o #2 fala de bairro/segurança/processo). Mencionar algo específico da unidade escolhida (sem valor).
+
+<b>VALIDAÇÃO (38–45s):</b> "Faltam [X]. Se uma delas é a sua, você já sabe o que fazer."</div>
+    <div class="why">Por que converte: publicado na semana de reservas, com o contador real no fim — o comprador vira o porta-voz da urgência. Dois depoimentos com ângulos distintos cobrem dois perfis de decisor.</div>
+  </div>
+
+  <h3 style="margin-top:34px">Posts estáticos & carrosséis (feed)</h3>
+  <div class="grid2">
+    <div class="card">
+      <strong>P1 · Dia D — "9 já têm dono"</strong> <span class="pill g1">seg 13/jul · 9h</span>
+      <div class="script">ARTE: fundo #1C1008, tipografia serifada dourada gigante: "O Ibiza 20 nasceu com 18 chaves." / linha 2 branca: "9 já têm dono."
+
+LEGENDA: 9 famílias compraram antes de qualquer anúncio. Com reserva assinada. Sem outdoor, sem estande, sem pressa.
+Isso não é marketing — é o que acontece quando o produto certo encontra quem sabe avaliar.
+As últimas 9 unidades abrem agora, para quem vai MORAR aqui.
+Tabela de lançamento válida até a 3ª reserva. → ibiza20.com.br</div>
+    </div>
+    <div class="card">
+      <strong>P2 · Preço âncora</strong> <span class="pill g1">S1</span>
+      <div class="script">ARTE: render garden + faixa inferior: "A partir de R$ [confirmar menor unid. disponível] · Entrada de 10%"
+
+LEGENDA: Vamos falar de número, sem rodeio:
+→ R$ 6.720 o m² — com garden privativo, num prédio de 18 unidades. Não existe comparável em Alfenas.
+→ Entrada de 10%. O sinal da reserva já faz parte dela.
+→ Preço travado no ato da reserva, contrato com registro em cartório.
+Transparência também é acabamento. → simulação no link da bio</div>
+    </div>
+    <div class="card">
+      <strong>P3 · Garden golden hour</strong> <span class="pill g2">S2 · publicar 7h–9h</span>
+      <div class="script">ARTE: render do garden na luz da manhã, sem texto, logo mínimo.
+
+LEGENDA: 48 metros quadrados que são só seus.
+Não é a área comum do prédio. Não é o parquinho do condomínio. É o SEU quintal — café de sábado, festa de aniversário, horta, cachorro, silêncio.
+São 6 apartamentos com garden no Ibiza 20. Todos no térreo. Sem reposição.
+#AsUltimas9 · ibiza20.com.br</div>
+    </div>
+    <div class="card">
+      <strong>P4 · Varanda noturna</strong> <span class="pill g2">S2 · publicar 19h–21h</span>
+      <div class="script">ARTE: render varanda gourmet à noite, mesa posta, luzes quentes.
+
+LEGENDA: Sexta, 20h. A churrasqueira acesa, o forro de madeira, a cidade lá embaixo.
+Varanda gourmet em TODOS os apartamentos — do primeiro ao último andar.
+A diferença entre morar num lugar e viver nele cabe nesses metros. → ibiza20.com.br</div>
+    </div>
+    <div class="card">
+      <strong>P5 · Carrossel "Qual das 9 é a sua?"</strong> <span class="pill g2">S3 · 6 slides</span>
+      <div class="script">S1 (capa): "9 unidades. 9 vidas diferentes. Qual é a sua? →"
+S2: casal sem filhos — 2Q 65m², varanda, "espaço de sobra, manutenção de menos"
+S3: família — 3Q 97–99m² com garden 34–48m², "o quintal que os filhos vão lembrar"
+S4: profissional liberal — 3Q alto, varanda em balanço, "o endereço que trabalha por você"
+S5: casal 50+ — térreo com garden + elevador, "conforto sem escada, jardim sem obra"
+S6 (CTA): mapa Montserrat + "Apresentação individual de 30 min → link na bio"</div>
+    </div>
+    <div class="card">
+      <strong>P6 · Bairro Montserrat (mapa)</strong> <span class="pill g2">S3</span>
+      <div class="script">ARTE: mapa estilizado com raios de tempo.
+
+LEGENDA: O endereço faz metade da mudança:
+📍 2 min da Praça Montserrat · 4 min do Hospital Alzira Velano · 4 min da UNIFENAS · 5 min do supermercado · 6 min do centro · 8 min da UNIFAL.
+Perto de tudo. Longe do barulho. Esquina da R. Ibiza com a Zaragoza. → ibiza20.com.br</div>
+    </div>
+    <div class="card">
+      <strong>P7 · Aviso de degrau</strong> <span class="pill g3">véspera do Gate 2 (3ª reserva)</span>
+      <div class="script">ARTE: fundo terracota, tipografia branca: "Aviso honesto: a tabela sobe na próxima reserva."
+
+LEGENDA: Combinamos transparência, então aqui vai: quando a 3ª reserva for assinada, a tabela do Ibiza 20 sobe 2,5%. Num 3 quartos, isso é ~R$ 16 mil.
+Não é técnica de venda — é o que 9 unidades fazem quando encontram uma cidade inteira.
+Quem quer o preço de hoje, precisa conhecer hoje. → link na bio</div>
+    </div>
+    <div class="card">
+      <strong>P8 · Contador (recorrente)</strong> <span class="pill g4">a cada reserva fechada</span>
+      <div class="script">ARTE: número gigante serifado (8 → 7 → 6...) sobre fundo escuro. "unidades disponíveis" embaixo.
+
+LEGENDA (modelo): E foram [X].
+A unidade [nº] — [tipologia] — acabou de ser reservada por mais uma família de Alfenas.
+Restam [X]. Os gardens do térreo: [X].
+→ ibiza20.com.br  ·  #AsUltimas9
+
+STORY simultâneo: "Unidade [nº] 🔑 reservada. Faltam [X]." (sem nome do comprador)</div>
+    </div>
+  </div>
+
+  <h3 style="margin-top:30px">Stories — cadência semanal</h3>
+  <div class="card">
+    <p style="font-size:14px"><strong>Ritmo:</strong> 3–4/semana em S0–S3 · diários de S4 em diante. <strong>Rotação de formatos:</strong> bastidor de obra/render (seg) · enquete ou caixa de perguntas (qua: "Garden ou varanda em balanço?" / "Qual planta você quer ver por dentro?") · prova social (sex: print de conversa autorizada, reserva fechada, "faltam X") · countdown nativo do Instagram na semana da abertura. <strong>Todo story de prova social fecha com link de agendamento.</strong> Stories são o canal do contador — cada reserva vira story no mesmo dia.</p>
+  </div>
+
+  <h3 style="margin-top:30px">Copy de anúncio — matriz de teste (C2 Lead-gen)</h3>
+  <table>
+    <tr><th>Variação</th><th>Ângulo</th><th>Texto principal</th><th>Título + CTA</th></tr>
+    <tr><td><strong>A</strong></td><td>Prova social</td><td>"9 famílias compraram no Ibiza 20 antes de qualquer anúncio. Com reserva assinada. As últimas 9 unidades abrem agora — garden privativo de até 48 m², varanda gourmet, 18 apartamentos no Montserrat. Entrada de 10%."</td><td>As Últimas 9 · <em>Cadastre-se</em></td></tr>
+    <tr><td><strong>B</strong></td><td>Escassez + escada</td><td>"A tabela de lançamento do Ibiza 20 vale até a 3ª reserva — depois sobe. Garden privativo, 18 unidades boutique, entrada de 10% com sinal que já faz parte dela. Receba plantas, preços e a simulação da sua unidade."</td><td>Tabela válida até a 3ª reserva · <em>Receber tabela</em></td></tr>
+    <tr><td><strong>C</strong></td><td>Produto/lifestyle</td><td>"48 m² de quintal que são só seus — num apartamento. O Ibiza 20 trouxe pra Alfenas o que a cidade nunca teve: garden privativo, varanda gourmet com forro de madeira e um prédio de só 18 unidades. A partir de R$ [confirmar]."</td><td>O quintal voltou · <em>Ver plantas</em></td></tr>
+  </table>
+  <p class="footnote">Criativo: Reel 1 (Márcio) roda como vídeo principal nas 3 variações; estáticos P3/P4 como suporte. Nomenclatura: <code>C2_[angulo]_[formato]_v[n]</code>. Regra: 3 variações ativas, matar CPL &gt; R$ 60 em 2 leituras, nova variação a cada morte.</p>
+</section>
+
+<!-- ============ 7. MÍDIA ============ -->
+<section id="midia">
+  <div class="sec-tag">Seção 7</div>
+  <h2>Mídia — estrutura, budget e regras</h2>
+  <p class="sec-lead">Meta Ads apenas (Instagram Feed + Reels + Stories, posicionamento manual). <strong>Alfenas + raio 15 km, sempre.</strong> Objetivo de captação = LEADS — o erro de R$ 488 em "Engajamento" não se repete. Retargeting ligado desde o dia 1: todo clique vira audiência quente.</p>
+
+  <table>
+    <tr><th>Campanha</th><th>Papel</th><th>Objetivo Meta</th><th>Público</th><th class="tnum">Diária</th><th>Período</th></tr>
+    <tr><td><strong>C1 · Awareness</strong></td><td>O nome "Ibiza 20" circulando na cidade antes da ligação de vendas</td><td>Reconhecimento</td><td>Alfenas +20km · 28–60</td><td class="tnum">R$ 15</td><td>Dia D → fim (sempre ativa)</td></tr>
+    <tr><td><strong>C2 · Lead-gen</strong></td><td>O núcleo: formulário instantâneo + WhatsApp</td><td><strong>Leads</strong></td><td>Alfenas +15km · 30–55 · interesses vazios</td><td class="tnum">R$ 45→60</td><td>Dia D → S5 (S6+ vira C4)</td></tr>
+    <tr><td><strong>C3 · Retargeting</strong></td><td>Reaparecer para quem clicou, visitou o site, engajou no perfil, abriu form e não enviou</td><td>Leads / Tráfego</td><td>Pixel site + engajados 60d + form aberto</td><td class="tnum">R$ 15→20</td><td><strong>Dia D → fim (desde o dia 1)</strong></td></tr>
+    <tr><td><strong>C4 · Abertura</strong></td><td>Agendamento das apresentações finais + Reel 9 cinematográfico</td><td>Leads (agendamento)</td><td>Todos os leads + engajados + lookalike 1%</td><td class="tnum">R$ 40→50</td><td>S6–S7</td></tr>
+  </table>
+
+  <div class="grid2" style="margin-top:16px">
+    <div class="card">
+      <h3 style="margin-top:0">Budget (7 semanas)</h3>
+      <table>
+        <tr><th>Linha</th><th class="tnum">Valor</th></tr>
+        <tr><td>C1 Awareness (49 dias × R$15)</td><td class="tnum">R$ 735</td></tr>
+        <tr><td>C2 Lead-gen (S1–S5, escalonado 45→60/d)</td><td class="tnum">R$ 2.205</td></tr>
+        <tr><td>C3 Retargeting (15→20/d, dia 1 ao fim)</td><td class="tnum">R$ 875</td></tr>
+        <tr><td>C4 Abertura (S6 40/d · S7 50/d)</td><td class="tnum">R$ 630</td></tr>
+        <tr><td><strong>Planejado</strong></td><td class="tnum"><strong>R$ 4.445</strong></td></tr>
+        <tr><td>Reserva de escala (só para vencedores: CPL &lt; R$40 → +20%) + impulsos pontuais nos reels de depoimento</td><td class="tnum">R$ 2.000–3.000</td></tr>
+        <tr><td><strong>Teto total</strong></td><td class="tnum"><strong>R$ 7.500</strong></td></tr>
+      </table>
+      <p class="footnote">Frame de ROI: se a mídia influenciar 5–6 das 9 vendas, o custo por venda influenciada fica em ~R$ 1.300–1.500 — irrelevante frente à margem de unidades de R$ 440–666 mil.</p>
+    </div>
+    <div class="card">
+      <h3 style="margin-top:0">Regras de otimização (ler a cada 3–4 dias)</h3>
+      <ul style="padding-left:18px;font-size:14px">
+        <li>CPL &lt; R$ 40 → escalar +20% (1× ao dia no máximo — mais que isso reseta o aprendizado)</li>
+        <li>CPL R$ 40–60 → manter, testar variação nova</li>
+        <li>CPL &gt; R$ 60 em 2 leituras → pausar criativo/conjunto e substituir</li>
+        <li>CTR &lt; 1% → problema de gancho/criativo, não de público — trocar o criativo antes de mexer no público</li>
+        <li>Frequência &gt; 4 → fadiga: criativo novo na mesma campanha</li>
+        <li>Formulário: tipo "mais volume", 5 campos (nome, WhatsApp, e-mail, pra quem é, nº de quartos) — a qualificação fina é no WhatsApp</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 8. MEDIÇÃO ============ -->
+<section id="medicao">
+  <div class="sec-tag">Seção 8</div>
+  <h2>Medição — war-room com dados próprios</h2>
+  <p class="sec-lead">O sistema FOR agora puxa Instagram e Meta Ads em tempo real, direto da Graph API (<code>/api/marketing/*</code>) — sem ferramenta paga, sem limite de contas. O war-room lê isso diariamente e decide em 15 minutos.</p>
+
+  <div class="grid2">
+    <div class="card red">
+      <h3 style="margin-top:0">Mapa de eventos — corrigir ANTES do Dia D</h3>
+      <ul style="padding-left:18px;font-size:14px">
+        <li><strong>Furo nº 1 (site):</strong> o Pixel 1145301761025984 dispara só <code>PageView</code>. Adicionar <code>Lead</code> no envio do formulário e <code>Contact</code> no clique do WhatsApp — sem isso o Meta otimiza no escuro.</li>
+        <li><strong>CAPI:</strong> o form já gera <code>event_id/fbp/fbc</code>; enviar o evento server-side com o mesmo ID (dedup) para recuperar conversões perdidas por iOS/bloqueadores.</li>
+        <li><strong>GA4 (G-X5826BYJH2):</strong> marcar <code>generate_lead</code> como conversão.</li>
+        <li><strong>UTMs em todo anúncio:</strong> <code>utm_source=meta&utm_campaign=[C]&utm_content=[criativo]</code>.</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h3 style="margin-top:0">Hierarquia de KPIs (o que manda)</h3>
+      <table>
+        <tr><th>Métrica</th><th class="tnum">Alvo</th></tr>
+        <tr><td>CPL (custo por lead)</td><td class="tnum">&lt; R$ 50</td></tr>
+        <tr><td>SLA de resposta (1h)</td><td class="tnum">100%</td></tr>
+        <tr><td>Lead → pasta</td><td class="tnum">15–25%</td></tr>
+        <tr><td><strong>Custo por pasta</strong></td><td class="tnum"><strong>&lt; R$ 400</strong></td></tr>
+        <tr><td>Pasta → reserva</td><td class="tnum">30–50%</td></tr>
+        <tr><td><strong>Reservas (a métrica única)</strong></td><td class="tnum"><strong>9</strong></td></tr>
+      </table>
+      <p class="footnote">Vaidade a ignorar: curtidas, alcance solto, seguidores. Não pagam apartamento.</p>
+    </div>
+  </div>
+
+  <div class="card gold">
+    <h3 style="margin-top:0">Ritual diário (15 min, mesmo horário)</h3>
+    <p style="font-size:14px">1 · CPL e CTR por conjunto (últimas 24–72h) → matar/escalar conforme as regras. &nbsp;2 · Leads que entraram × atendidos dentro do SLA. &nbsp;3 · Pastas novas × meta (18–27). &nbsp;4 · Frequência subindo? → agendar criativo novo. &nbsp;5 · <strong>Uma linha no log de aprendizado</strong>: o que testamos, o que aconteceu, o que muda amanhã. &nbsp;<em>Revisão de gate: semanal — inventário vendido → abre gate? sobe tabela? muda a mensagem?</em></p>
+  </div>
+</section>
+
+<!-- ============ 9. SITE ============ -->
+<section id="site">
+  <div class="sec-tag">Seção 9</div>
+  <h2>Site ibiza20.com.br — sprint de correções</h2>
+  <p class="sec-lead">A landing existente é boa e completa — não se refaz, se corrige com cirurgia. Auditoria feita sobre o código real (<code>projeto.html</code>). Com o RI registrado, ela ganha inclusive um selo novo de confiança.</p>
+
+  <table>
+    <tr><th>Prioridade</th><th>Correção</th><th>Por quê</th></tr>
+    <tr><td><span class="pill g4">P0</span></td><td>Disparar <code>Lead</code> (form) e <code>Contact</code> (WhatsApp) no Pixel</td><td>Sem evento de conversão o algoritmo não otimiza para leads — furo nº 1 da campanha inteira</td></tr>
+    <tr><td><span class="pill g4">P0</span></td><td>Reescrever o FAQ "processo de compra": remover a entrada via SCP; novo fluxo — cadastro → apresentação → reserva com sinal → contrato definitivo. <strong>Adicionar selo "Registro de Incorporação nº [X] — Cartório de Alfenas"</strong></td><td>SCP é linguagem de investidor (mata a fase morador); o RI registrado é o argumento máximo de segurança — hoje escondido</td></tr>
+    <tr><td><span class="pill g3">P1</span></td><td>Trocar "50% reservado" por <strong>"9 famílias já escolheram"</strong> + contador de unidades restantes</td><td>Concreto e humano converte mais que percentual — e o contador liga o site à mecânica das Últimas 9</td></tr>
+    <tr><td><span class="pill g3">P1</span></td><td>Suavizar o registro excludente ("não é para todo mundo", "feito para poucos") → "feito para quem vai viver aqui"</td><td>Exclusividade de clube fechado afasta a família compradora na fase de mercado aberto</td></tr>
+    <tr><td><span class="pill g3">P1</span></td><td>Um CTA primário repetido: "Receba plantas, preços e simulação no WhatsApp" + bloco "entrada de 10%"</td><td>Hoje 5+ CTAs competem; o número da entrada é o maior destravador de decisão e não aparece</td></tr>
+    <tr><td><span class="pill g2">P2</span></td><td>Reduzir de 3 famílias de fonte (Inter+Lato+Outfit) para 2 · H1 real no hero · 1 imagem de lifestyle além dos renders</td><td>Peso de página, hierarquia SEO e conexão emocional</td></tr>
+  </table>
+</section>
+
+<!-- ============ 10. PROGRAMAÇÃO ============ -->
+<section id="programacao">
+  <div class="sec-tag">Seção 10 · Final</div>
+  <h2>Programação — do dia 7/jul à 9ª chave</h2>
+  <p class="sec-lead"><strong>O RI está registrado — não há mais espera.</strong> A semana atual (S0) é compactada em 6 dias de preparação com seeding; o disparo (Dia D) é segunda-feira 13/jul. Daí em diante, 7 semanas até 30/ago. Cada semana tem conteúdo, mídia e um estado esperado do funil. O <a class="inline" href="https://guto-creator.github.io/ibiza20-calendario/" target="_blank">calendário operacional dia a dia</a> complementa esta visão.</p>
+
+  <div class="week">
+    <h4>S0 · ter 7 → dom 12/jul — Preparação + Seeding <span class="pill g1">sem mídia paga</span></h4>
+    <div class="wk-sub">Objetivo: perfil limpo, algoritmo religado, assets prontos, Frente C ativada, site corrigido.</div>
+    <ul>
+      <li><strong>Ter 7:</strong> arquivar TODOS os posts de investidor (Fase Zero/SCP/FOR Capital) · trocar bio: <em>"O único garden privativo de Alfenas. 18 apartamentos. 9 disponíveis. ↓ plantas e preços"</em> · link → ibiza20.com.br</li>
+      <li><strong>Ter 7–qua 8:</strong> sprint do site (P0 + P1 da Seção 9) · criar formulário de lead no Meta (RASCUNHO) · estrutura das 4 campanhas montada e PAUSADA</li>
+      <li><strong>Qua 8:</strong> Seeding 1 no feed (Alfenas/bairro — SEM CTA) · stories de bastidor · <strong>Frente C:</strong> mensagem individual do Guto aos 9 compradores (indicação com prioridade de escolha)</li>
+      <li><strong>Qui 9–sex 10:</strong> gravar Reels 1, 2, 4 (Márcio) e 3, 6 (Edinho) numa diária cada — shot list da Seção 6 · Seeding 2 sex (garden — SEM CTA) · confirmar quais 9 unidades restam + nº do RI para o selo do site</li>
+      <li><strong>Sáb 11–dom 12:</strong> aprovar artes P1, P2, P3 · agendar depoimento do comprador #1 · testar Pixel (evento Lead) com o Meta Pixel Helper · kit-pasta impresso (ficha + checklist docs + minuta + simulações)</li>
+    </ul>
+  </div>
+
+  <div class="week">
+    <h4>DIA D · seg 13/jul — O disparo <span class="pill g1">Gate 1 abre</span></h4>
+    <ul>
+      <li><strong>9h00</strong> — Post P1 no feed: "O Ibiza 20 nasceu com 18 chaves. 9 já têm dono."</li>
+      <li><strong>9h10</strong> — Reel 1 (Márcio, já gravado e editado)</li>
+      <li><strong>9h15</strong> — Ativar C1 (awareness) · <strong>9h20</strong> — Ativar C2 (lead-gen, 3 variações A/B/C) · <strong>9h25</strong> — Ativar C3 (retargeting)</li>
+      <li><strong>9h30</strong> — Stories: clima de abertura + countdown</li>
+      <li><strong>10h00</strong> — WhatsApp da Frente C: "Abrimos. Sua indicação tem prioridade até sexta."</li>
+      <li><strong>Dia todo</strong> — SLA de 1h rodando; primeiro war-room às 18h</li>
+    </ul>
+  </div>
+
+  <div class="week">
+    <h4>S1 · 13–19/jul — Fundação <span class="pill g1">Gate 1</span></h4>
+    <div class="wk-sub">Mídia: C1 15 + C2 45 + C3 15 = R$ 75/dia · Funil esperado: primeiros 15–25 leads, 2–4 apresentações, 1ª pasta</div>
+    <ul>
+      <li>Feed: P2 (preço âncora/entrada 10%) qua · Reel 4 (as 9 invisíveis) qui</li>
+      <li>Stories 4×: bastidor, enquete "garden ou varanda?", prova social, convite</li>
+      <li>Frente C: follow-up individual das indicações · Site: selo do RI no ar</li>
+    </ul>
+  </div>
+
+  <div class="week">
+    <h4>S2 · 20–26/jul — Desejo <span class="pill g1">Gate 1</span></h4>
+    <div class="wk-sub">Mídia: C2 sobe p/ 50/d (se CPL &lt; 60) = R$ 80/dia · Esperado: 1ª–2ª reservas → stories de contador começam</div>
+    <ul>
+      <li>Feed: P3 (garden 7h–9h) seg · P4 (varanda noturna 19h–21h) qua · <strong>Reel 3 (Edinho — 38 anos)</strong> qui — impulsionar R$ 150–200 do fundo de reserva (é o rosto com maior engajamento comprovado)</li>
+      <li>Gravar: Reels 7 (Rafael) e 8 (Márcio) + b-roll · Carrossel Guto (opcional) entra aqui se aprovado</li>
+    </ul>
+  </div>
+
+  <div class="week">
+    <h4>S3 · 27/jul–2/ago — Produto <span class="pill g2">véspera do Gate 2</span></h4>
+    <div class="wk-sub">Mídia: C2 55/d = R$ 85/dia · Esperado: 3ª reserva se aproxima → P7 (aviso de degrau) pronto pra publicar na véspera</div>
+    <ul>
+      <li>Feed: Carrossel P5 ("qual das 9 é a sua?") seg · P6 (mapa Montserrat) qua · Reel 2 (boutique) + Reel 7 (Rafael) qui/sex</li>
+      <li><strong>Na 3ª reserva assinada:</strong> publicar P7 na véspera (aviso honesto) → subir tabela +2,5% → P8 contador + story "faltam 7… 6"</li>
+    </ul>
+  </div>
+
+  <div class="week">
+    <h4>S4 · 3–9/ago — Urgência <span class="pill g2">Gate 2 ativo</span></h4>
+    <div class="wk-sub">Mídia: C2 60/d + C3 sobe p/ 20/d = R$ 95/dia · Stories passam a DIÁRIOS · Esperado: 4ª–5ª reservas, 8–12 pastas acumuladas</div>
+    <ul>
+      <li>Feed: Reel 6 (Edinho — o conselho) qui · post da unidade-destaque da semana (a de maior garden disponível, com planta e simulação)</li>
+      <li>Copy dos anúncios atualiza para o preço do Gate 2 ("a tabela já subiu uma vez — sobe de novo na 6ª reserva")</li>
+      <li>Gravar depoimento do comprador #1 (Reel 5) se ainda não gravado</li>
+    </ul>
+  </div>
+
+  <div class="week">
+    <h4>S5 · 10–16/ago — Apresentações privadas <span class="pill g2">Gate 2→3</span></h4>
+    <div class="wk-sub">Mídia: C2 60/d mantido = R$ 95/dia · Esperado: 5ª–6ª reservas → Gate 3 (+5%) abre; semana de pastas</div>
+    <ul>
+      <li>Feed: Reel 5 (comprador #1) qui — impulsionar · post convite "apresentação individual de 30 min"</li>
+      <li>WhatsApp: cadência D+7 com gatilho de escada em toda a base de leads não convertidos</li>
+      <li>Na 6ª reserva: repetir o ritual do degrau (aviso → sobe → contador)</li>
+    </ul>
+  </div>
+
+  <div class="week">
+    <h4>S6 · 17–23/ago — Abertura final <span class="pill g3">Gate 3 ativo</span></h4>
+    <div class="wk-sub">Mídia: C4 entra (40/d) + C2 reduz p/ 45/d = R$ 115/dia (pico) · Esperado: 7ª reserva, agenda de apresentações lotada</div>
+    <ul>
+      <li>Feed: Reel 8 (Márcio — convite individual, com data) seg · <strong>Reel 9 (cinematográfico)</strong> sex — criativo principal da C4</li>
+      <li>Stories: countdown nativo + celebração de cada reserva em tempo real</li>
+    </ul>
+  </div>
+
+  <div class="week">
+    <h4>S7 · 24–30/ago — As últimas <span class="pill g4">Gate 4</span></h4>
+    <div class="wk-sub">Mídia: C4 50/d + C1 + C3 = R$ 85/dia (C2 pausa) · Esperado: 8ª e 9ª reservas — cada uma é evento público</div>
+    <ul>
+      <li>Feed: Reel 10 (comprador #2, com contador real) · P8 a cada reserva · post de encerramento quando a 9ª assinar: <em>"18 chaves. 18 famílias. Obrigado, Alfenas."</em></li>
+      <li>Sobrar unidade? C4 segue com "a última unidade do Ibiza 20" — historicamente o criativo de maior CTR de um lançamento</li>
+      <li>War-room final: fechar o log de aprendizado → vira o playbook do próximo lançamento FOR</li>
+    </ul>
+  </div>
+
+  <div class="card gold" style="margin-top:20px">
+    <h3 style="margin-top:0">Pendências que destravam peças específicas</h3>
+    <ul class="check">
+      <li><strong>Lista das 9 unidades disponíveis</strong> + nº do RI → destrava P2 ("a partir de R$"), selo do site e simulações do kit-pasta</li>
+      <li><strong>VoC</strong> (2–3 compradores, pode ser áudio de WhatsApp) → refina ganchos dos Reels 5/10 e valida as personas</li>
+      <li><strong>Confirmação da escada</strong> (os % de 2,5/5/7,5 são recomendação — precisam do seu OK formal antes do P7 ir ao ar)</li>
+      <li><strong>Agendas de gravação</strong>: Márcio e Edinho na S0 (qui 9–sex 10/jul)</li>
+    </ul>
+  </div>
+</section>
+
+
+</div>
+<div class="footer">Ibiza 20 · FOR Construtora e Incorporadora · documento interno de estratégia · jul/2026</div>
+</body>
+</html>
