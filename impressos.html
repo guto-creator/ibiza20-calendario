@@ -32,10 +32,15 @@
   h3{font-size:16px;color:var(--terra-dark);margin:24px 0 10px}
 
   .card{background:#fff;border-radius:12px;padding:20px 22px;border:1px solid #e7dccf;box-shadow:0 1px 4px rgba(0,0,0,.05);margin-bottom:16px}
-  .card.gold{border-left:5px solid var(--dourado)}
-  .card.red{border-left:5px solid var(--warn)}
-  .card.green{border-left:5px solid var(--ok)}
-  .card.blue{border-left:5px solid var(--info)}
+  /* Variantes semânticas por tom de fundo e cor do título — sem barra lateral */
+  .card.gold{background:#FFFCF6;border-color:#E9D6AE}
+  .card.gold h3{color:#8A5A00}
+  .card.red{background:#FFFAF6;border-color:#F1D5C0}
+  .card.red h3{color:#9C3B12}
+  .card.green{background:#F8FBF9;border-color:#D2E7D9}
+  .card.green h3{color:#1A6E30}
+  .card.blue{background:#F9FBFF;border-color:#D6DEF2}
+  .card.blue h3{color:#2B4AA0}
 
   .grid2{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:16px}
   .grid3{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:14px}
@@ -54,8 +59,8 @@
   .pill.d{background:#EFF3FE;color:#2b4aa0;border:1px solid var(--info)}
 
   .copy{background:#FBF7F0;border:1px solid #ecdfc9;border-radius:10px;padding:14px 16px;font-size:14px;white-space:pre-wrap;margin-top:8px;font-family:Georgia,'Times New Roman',serif}
-  .why{font-size:12.5px;color:#7a5b2b;background:#FFF8EA;border-left:3px solid var(--dourado);padding:8px 12px;border-radius:0 8px 8px 0;margin-top:8px}
-  .alerta{background:#FFF3E6;border:1px dashed var(--warn);color:#8a4a12;font-size:13px;border-radius:8px;padding:10px 14px;margin-top:12px}
+  .why{font-size:12.5px;color:#7A5B2B;background:#FDF6E7;border:1px solid #EFE0C0;padding:10px 14px;border-radius:8px;margin-top:10px}
+  .alerta{background:#FDF2E6;border:1px solid #EECBA6;color:#8A4A12;font-size:13px;border-radius:8px;padding:11px 15px;margin-top:12px}
 
   .panel{border:2px solid #e0d3c2;border-radius:10px;padding:16px 18px;background:#fff;margin-bottom:14px}
   .panel-head{display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin-bottom:10px}
