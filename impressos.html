@@ -1,0 +1,598 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ibiza 20 — Briefing de Impressos · Flyer A5 + Folder A3</title>
+<style>
+  :root{
+    --terra-dark:#5C2218; --terra-mid:#8B3A2A; --terra-light:#C4694A;
+    --creme:#FAF5EE; --amber:#A15600; --dourado:#C9963A; --escuro:#1C1008;
+    --ok:#2EA84B; --warn:#C05621; --info:#4A6EC4;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{font-family:'Segoe UI',Arial,sans-serif;background:#F4EFE8;color:#1C1008;line-height:1.65}
+
+  .topnav{position:sticky;top:0;z-index:100;background:var(--escuro);display:flex;overflow-x:auto;padding:0 16px;box-shadow:0 2px 12px rgba(0,0,0,.35)}
+  .topnav a{color:#bbb;text-decoration:none;font-size:12.5px;font-weight:600;padding:13px;white-space:nowrap}
+  .topnav a:hover{color:var(--creme)}
+  .topnav a.hot{color:var(--dourado)}
+
+  .hero{background:linear-gradient(160deg,#1C1008 0%,#5C2218 100%);color:var(--creme);padding:48px 24px 42px;text-align:center}
+  .hero .eyebrow{font-size:12px;letter-spacing:3px;text-transform:uppercase;color:var(--dourado);margin-bottom:12px}
+  .hero h1{font-size:clamp(26px,5vw,40px);font-weight:800}
+  .hero .sub{max-width:760px;margin:14px auto 0;font-size:15px;color:#e8ddce}
+
+  .wrap{max-width:1060px;margin:0 auto;padding:30px 20px 80px}
+  section{margin-top:50px;scroll-margin-top:60px}
+  .sec-tag{font-size:11px;letter-spacing:2.5px;text-transform:uppercase;color:var(--terra-mid);font-weight:700}
+  h2{font-size:25px;color:var(--terra-dark);margin:6px 0}
+  .sec-lead{color:#555;font-size:14.5px;max-width:850px;margin-bottom:20px}
+  h3{font-size:16px;color:var(--terra-dark);margin:24px 0 10px}
+
+  .card{background:#fff;border-radius:12px;padding:20px 22px;border:1px solid #e7dccf;box-shadow:0 1px 4px rgba(0,0,0,.05);margin-bottom:16px}
+  .card.gold{border-left:5px solid var(--dourado)}
+  .card.red{border-left:5px solid var(--warn)}
+  .card.green{border-left:5px solid var(--ok)}
+  .card.blue{border-left:5px solid var(--info)}
+
+  .grid2{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:16px}
+  .grid3{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:14px}
+
+  table{width:100%;border-collapse:collapse;font-size:13.5px;background:#fff;border-radius:10px;overflow:hidden}
+  th{background:var(--terra-dark);color:var(--creme);text-align:left;padding:10px 12px;font-size:12px;letter-spacing:.6px;text-transform:uppercase}
+  td{padding:10px 12px;border-bottom:1px solid #f0e7da;vertical-align:top}
+  tr:last-child td{border-bottom:none}
+  tr:nth-child(even) td{background:#FBF7F0}
+  .tnum{text-align:right;font-variant-numeric:tabular-nums;white-space:nowrap}
+
+  .pill{display:inline-block;font-size:11px;font-weight:700;padding:3px 10px;border-radius:20px;letter-spacing:.4px}
+  .pill.a{background:#EAF7EE;color:#1a6e30;border:1px solid var(--ok)}
+  .pill.b{background:#FFF6E8;color:#8a5a00;border:1px solid var(--dourado)}
+  .pill.c{background:#FDEEE6;color:#9c3b12;border:1px solid var(--terra-light)}
+  .pill.d{background:#EFF3FE;color:#2b4aa0;border:1px solid var(--info)}
+
+  .copy{background:#FBF7F0;border:1px solid #ecdfc9;border-radius:10px;padding:14px 16px;font-size:14px;white-space:pre-wrap;margin-top:8px;font-family:Georgia,'Times New Roman',serif}
+  .why{font-size:12.5px;color:#7a5b2b;background:#FFF8EA;border-left:3px solid var(--dourado);padding:8px 12px;border-radius:0 8px 8px 0;margin-top:8px}
+  .alerta{background:#FFF3E6;border:1px dashed var(--warn);color:#8a4a12;font-size:13px;border-radius:8px;padding:10px 14px;margin-top:12px}
+
+  .panel{border:2px solid #e0d3c2;border-radius:10px;padding:16px 18px;background:#fff;margin-bottom:14px}
+  .panel-head{display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin-bottom:10px}
+  .panel-num{background:var(--terra-dark);color:var(--dourado);font-weight:800;border-radius:7px;padding:4px 11px;font-size:12.5px;white-space:nowrap}
+  .panel-title{font-size:15.5px;font-weight:700;color:var(--escuro)}
+  .panel-role{font-size:12px;color:#888}
+
+  .diagram{background:#fff;border:1px solid #e0d3c2;border-radius:10px;padding:18px;margin:14px 0;overflow-x:auto}
+  .fold{display:flex;gap:6px;min-width:520px}
+  .fold-panel{flex:1;border:2px dashed #c9a87a;border-radius:6px;padding:14px 10px;text-align:center;background:#FDFAF5;min-height:120px;display:flex;flex-direction:column;justify-content:center;gap:5px}
+  .fold-panel .fp-tag{font-size:10px;letter-spacing:1px;text-transform:uppercase;color:#a08055;font-weight:700}
+  .fold-panel .fp-name{font-size:13.5px;font-weight:700;color:var(--terra-dark)}
+  .fold-panel .fp-desc{font-size:11.5px;color:#777;line-height:1.4}
+  .fold-panel.capa{background:#F3E9DC;border-style:solid;border-color:var(--amber)}
+  .fold-label{font-size:12px;color:#8a6a45;font-weight:700;margin-bottom:8px;letter-spacing:.5px}
+
+  ul.check{list-style:none;padding-left:2px}
+  ul.check li{padding:5px 0 5px 26px;position:relative;font-size:14px}
+  ul.check li::before{content:"";position:absolute;left:0;top:9px;width:14px;height:14px;border:2px solid var(--dourado);border-radius:4px}
+
+  ul.no{list-style:none;padding-left:2px}
+  ul.no li{padding:4px 0 4px 26px;position:relative;font-size:14px}
+  ul.no li::before{content:"✕";position:absolute;left:4px;top:4px;color:#c0392b;font-weight:800}
+
+  .swatch{display:inline-flex;align-items:center;gap:8px;font-size:12.5px;margin-right:14px;margin-bottom:8px}
+  .sw{width:26px;height:26px;border-radius:6px;border:1px solid rgba(0,0,0,.15)}
+
+  .footer{color:#998;text-align:center;font-size:12px;padding:40px 20px}
+  code{background:#F3EDE3;padding:2px 6px;border-radius:4px;font-size:12.5px}
+  @media(max-width:600px){.wrap{padding:20px 14px 60px}}
+</style>
+</head>
+<body>
+
+<nav class="topnav">
+  <a href="#papeis" class="hot">1 · Os dois papéis</a>
+  <a href="#regras">2 · Regras de discurso</a>
+  <a href="#a5">3 · Flyer A5</a>
+  <a href="#a3">4 · Folder A3</a>
+  <a href="#arte">5 · Direção de arte</a>
+  <a href="#tecnico">6 · Specs técnicas</a>
+  <a href="#distribuicao">7 · Distribuição</a>
+  <a href="#checklist" class="hot">8 · Checklist</a>
+</nav>
+
+<div class="hero">
+  <div class="eyebrow">Ibiza 20 · FOR Construtora · Alfenas-MG</div>
+  <h1>Briefing de Impressos</h1>
+  <p class="sub">Flyer A5 e Folder A3 com duas dobras — fase morador. Documento para a designer: conteúdo painel a painel, copy pronta, direção de arte e especificações de produção.</p>
+</div>
+
+<div class="wrap">
+
+<!-- ========== 1 ========== -->
+<section id="papeis">
+  <div class="sec-tag">Seção 1</div>
+  <h2>As duas peças têm papéis diferentes</h2>
+  <p class="sec-lead">O erro mais comum em material impresso de lançamento é fazer a mesma peça em dois tamanhos. Aqui elas fazem trabalhos opostos no funil — e por isso a quantidade de informação em cada uma é radicalmente diferente.</p>
+
+  <div class="grid2">
+    <div class="card green">
+      <h3 style="margin-top:0">Flyer A5 — a peça dos 3 segundos</h3>
+      <p style="font-size:14px"><strong>Trabalho:</strong> fazer um desconhecido escanear o QR ou salvar o WhatsApp. É um anúncio, não um catálogo.</p>
+      <p style="font-size:14px;margin-top:8px"><strong>Onde vive:</strong> mão do corretor, balcão de consultório, mesa de café, parceiros. Circula muito, custa pouco.</p>
+      <p style="font-size:14px;margin-top:8px"><strong>Regra de ouro:</strong> <strong>UMA</strong> mensagem, <strong>UM</strong> CTA. Toda informação a mais reduz a conversão. Resista à tentação de encher.</p>
+    </div>
+    <div class="card gold">
+      <h3 style="margin-top:0">Folder A3 — a peça que sobrevive à reunião</h3>
+      <p style="font-size:14px"><strong>Trabalho:</strong> ser entregue na apresentação e reaberto em casa, na mesa de jantar, para convencer quem <em>não</em> estava na reunião (o cônjuge, o pai, o sócio).</p>
+      <p style="font-size:14px;margin-top:8px"><strong>Onde vive:</strong> apresentação individual de 30 min, visita, imobiliária parceira. Circula pouco, custa mais, decide mais.</p>
+      <p style="font-size:14px;margin-top:8px"><strong>Regra de ouro:</strong> responde as objeções que o corretor não está lá para responder. Planta, metragem, entrada, segurança jurídica.</p>
+    </div>
+  </div>
+
+  <div class="card blue">
+    <h3 style="margin-top:0">O que isso significa na prática</h3>
+    <p style="font-size:14px">O A5 pode ser lindo e quase vazio — silêncio é sinal de alto padrão. O A3 pode ser denso, porque quem o abre <strong>já demonstrou interesse</strong> e quer informação. Se a designer inverter isso (A5 poluído, A3 vazio), as duas peças falham ao mesmo tempo.</p>
+  </div>
+</section>
+
+<!-- ========== 2 ========== -->
+<section id="regras">
+  <div class="sec-tag">Seção 2</div>
+  <h2>Regras de discurso — inegociáveis</h2>
+  <p class="sec-lead">O Ibiza 20 passou por uma fase de captação com investidores. Essa fase acabou. Todo material impresso agora fala com <strong>quem vai morar</strong>. Estas regras valem para as duas peças.</p>
+
+  <div class="grid2">
+    <div class="card red">
+      <h3 style="margin-top:0">Nunca aparecer no impresso</h3>
+      <ul class="no">
+        <li>"Investidor", "SCP", "cotas", "Fase Zero"</li>
+        <li>"Rentabilidade", "retorno", "valorização", "seu capital"</li>
+        <li>"Não é para todo mundo", "para poucos", "seleto grupo"</li>
+        <li>Contar <em>quando</em> ou <em>como</em> as primeiras unidades foram vendidas</li>
+        <li>Tabela completa de preços (explico o porquê abaixo)</li>
+        <li>Número exato de unidades restantes ("restam 9")</li>
+      </ul>
+    </div>
+    <div class="card green">
+      <h3 style="margin-top:0">A prova social correta</h3>
+      <p style="font-size:14px">Use sempre a forma <strong>presente e neutra</strong>:</p>
+      <div class="copy">"Metade já tem dono."</div>
+      <p style="font-size:13.5px;margin-top:10px">E a urgência sempre <strong>olhando para frente</strong>:</p>
+      <div class="copy">"As últimas unidades estão na tabela de lançamento."</div>
+      <div class="why">Por quê: dizer que outros compraram "antes, em silêncio, antes do anúncio" faz o leitor sentir que perdeu o melhor momento e agora vai pagar caro. "Metade já tem dono" valida sem rebaixar quem chega agora.</div>
+    </div>
+  </div>
+
+  <div class="alerta">
+    <strong>⚠️ Por que o número exato não vai no papel.</strong> A campanha usa um contador que cai a cada reserva (9 → 8 → 7…). Papel é estático: se imprimirmos "restam 9" e vendermos duas na semana seguinte, o material passa a mentir — e mentira em impresso destrói confiança. <strong>"Metade já tem dono" é um fato estável</strong> — só muda quando a 10ª unidade for vendida, e aí é gatilho natural de nova tiragem. O número exato vive no digital (site, WhatsApp, stories), onde atualiza sozinho.
+  </div>
+
+  <div class="alerta">
+    <strong>⚠️ Por que a tabela de preços não vai no papel.</strong> O lançamento tem escada de preço: a tabela sobe conforme as reservas acontecem. Uma tabela impressa vira ou (a) um preço vencido, ou (b) uma âncora que impede o reajuste. <strong>No impresso vai só o ponto de entrada</strong> — "a partir de R$ ___" e "entrada de 10%" — que é o que o leitor precisa para se autoqualificar. A tabela completa e atualizada vive atrás do QR code.
+  </div>
+</section>
+
+<!-- ========== 3 ========== -->
+<section id="a5">
+  <div class="sec-tag">Seção 3</div>
+  <h2>Flyer A5 — 148 × 210 mm, frente e verso</h2>
+  <p class="sec-lead">Formato retrato. Frente vende a ideia; verso dá o motivo de guardar o papel (mapa e metragens). Frente e verso porque o custo adicional do verso é marginal e ele dobra a vida útil da peça.</p>
+
+  <h3>FRENTE — hierarquia de leitura</h3>
+  <div class="panel">
+    <div class="panel-head"><span class="panel-num">1</span><span class="panel-title">Imagem herói</span><span class="panel-role">~55% da área, sangrando no topo</span></div>
+    <p style="font-size:14px">Render do <strong>garden privativo em golden hour</strong> (luz de fim de tarde, quente). É o diferencial que Alfenas não tem — precisa ser a primeira coisa que o olho encontra. Alternativa: fachada em golden hour.</p>
+  </div>
+  <div class="panel">
+    <div class="panel-head"><span class="panel-num">2</span><span class="panel-title">Eyebrow + Headline + Subheadline</span><span class="panel-role">bloco de texto principal</span></div>
+    <div class="copy">ALFENAS · BAIRRO MONTSERRAT
+
+Seu jardim particular.
+No seu apartamento.
+
+Gardens privativos de 24 a 48 m², varanda gourmet com
+forro de madeira e elevador. Um residencial boutique
+de apenas 18 apartamentos.</div>
+    <div class="why">A headline entrega o benefício em 6 palavras e cria a surpresa que faz parar (jardim particular + apartamento não costumam andar juntos). A subheadline sustenta com fatos concretos e específicos — nunca adjetivos.</div>
+  </div>
+  <div class="panel">
+    <div class="panel-head"><span class="panel-num">3</span><span class="panel-title">Faixa de oferta</span><span class="panel-role">fundo âmbar sólido, texto creme</span></div>
+    <div class="copy">A partir de R$ [CONFIRMAR]  ·  Entrada de 10%</div>
+    <div class="alerta" style="margin-top:10px">Este valor deve ser o da <strong>menor unidade ainda disponível</strong> — confirmar com o comercial antes de fechar a arte. Se a unidade do "a partir de" já estiver vendida, a peça nasce mentindo.</div>
+  </div>
+  <div class="panel">
+    <div class="panel-head"><span class="panel-num">4</span><span class="panel-title">CTA + QR code</span><span class="panel-role">rodapé, alto contraste</span></div>
+    <div class="copy">Aponte a câmera e veja as plantas e a tabela atualizada
+[QR CODE — mín. 2,5 cm]
+
+WhatsApp (35) 99781-7448  ·  ibiza20.com.br</div>
+  </div>
+  <div class="panel">
+    <div class="panel-head"><span class="panel-num">5</span><span class="panel-title">Selo de confiança + logos</span><span class="panel-role">rodapé, discreto (corpo 6–7 pt)</span></div>
+    <div class="copy">Registro de Incorporação — Cartório de Registro de Imóveis de Alfenas/MG
+Logo Ibiza 20  ·  Logo FOR Construtora</div>
+    <div class="why">O RI registrado é o maior argumento de segurança que existe para quem compra na planta — e hoje quase ninguém o comunica. Discreto, mas presente: quem procura, encontra.</div>
+  </div>
+
+  <h3 style="margin-top:30px">VERSO — o motivo de guardar</h3>
+  <div class="panel">
+    <div class="panel-head"><span class="panel-num">1</span><span class="panel-title">Faixa de prova social</span></div>
+    <div class="copy">Metade já tem dono.
+As últimas unidades estão na tabela de lançamento.</div>
+  </div>
+  <div class="panel">
+    <div class="panel-head"><span class="panel-num">2</span><span class="panel-title">Tipologias</span><span class="panel-role">3 blocos, ícone + metragem</span></div>
+    <div class="copy">1 QUARTO  ·  42 m² + garden privativo
+2 QUARTOS ·  65 a 78 m²  ·  garden nas unidades térreas
+3 QUARTOS ·  97 a 99 m²  ·  garden de até 48 m² nas térreas
+
+Todos com varanda gourmet e vaga com infraestrutura para carro elétrico.</div>
+  </div>
+  <div class="panel">
+    <div class="panel-head"><span class="panel-num">3</span><span class="panel-title">Mapa de conveniência</span><span class="panel-role">mapa estilizado, sem Google Maps cru</span></div>
+    <div class="copy">2 min — Praça Montserrat
+4 min — Hospital Alzira Velano
+4 min — UNIFENAS
+5 min — Supermercado
+6 min — Centro
+8 min — UNIFAL</div>
+    <div class="why">Este bloco é o que faz o papel não ir para o lixo: vira uma referência útil sobre o bairro. Desenhe o mapa no estilo da marca (traço fino, âmbar sobre creme) — captura de tela de mapa quebra o alto padrão.</div>
+  </div>
+  <div class="panel">
+    <div class="panel-head"><span class="panel-num">4</span><span class="panel-title">CTA repetido</span><span class="panel-role">QR + WhatsApp de novo</span></div>
+    <p style="font-size:14px">O verso precisa do próprio CTA — muita gente só vê esse lado.</p>
+  </div>
+</section>
+
+<!-- ========== 4 ========== -->
+<section id="a3">
+  <div class="sec-tag">Seção 4</div>
+  <h2>Folder A3 — 420 × 297 mm, duas dobras (6 painéis)</h2>
+  <p class="sec-lead">A3 paisagem com duas dobras paralelas = 3 painéis de <strong>140 × 297 mm</strong> por face. Recomendo <strong>dobra sanfona (Z)</strong>: painéis iguais, menos risco de erro de corte, e abre plano revelando a face interna como <strong>um único painorama de 420 × 297 mm</strong>.</p>
+
+  <div class="diagram">
+    <div class="fold-label">FACE EXTERNA — o que se vê com o folder fechado</div>
+    <div class="fold">
+      <div class="fold-panel capa">
+        <div class="fp-tag">Painel 1</div>
+        <div class="fp-name">CAPA</div>
+        <div class="fp-desc">Render + logo + headline. Muito respiro. A capa não vende — ela faz abrir.</div>
+      </div>
+      <div class="fold-panel">
+        <div class="fp-tag">Painel 2</div>
+        <div class="fp-name">O ENDEREÇO</div>
+        <div class="fp-desc">Mapa, tempos, o bairro Montserrat e o que existe ao redor.</div>
+      </div>
+      <div class="fold-panel">
+        <div class="fp-tag">Painel 3</div>
+        <div class="fp-name">QUEM CONSTRÓI</div>
+        <div class="fp-desc">FOR + parceiros técnicos, ficha técnica, contato, QR, dados legais.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="diagram">
+    <div class="fold-label">FACE INTERNA — desenhar como UM spread contínuo de 420 × 297 mm</div>
+    <div class="fold">
+      <div class="fold-panel">
+        <div class="fp-tag">Painel 4</div>
+        <div class="fp-name">O GARDEN</div>
+        <div class="fp-desc">O diferencial. Render grande + copy emocional.</div>
+      </div>
+      <div class="fold-panel">
+        <div class="fp-tag">Painel 5</div>
+        <div class="fp-name">AS PLANTAS</div>
+        <div class="fp-desc">Tipologias, metragens, o que cabe em cada uma.</div>
+      </div>
+      <div class="fold-panel">
+        <div class="fp-tag">Painel 6</div>
+        <div class="fp-name">COMO GARANTIR A SUA</div>
+        <div class="fp-desc">Entrada, sinal, RI, os 4 passos e o CTA final.</div>
+      </div>
+    </div>
+    <p style="font-size:12.5px;color:#8a6a45;margin-top:12px">Uma faixa de título deve <strong>atravessar os três painéis</strong> no topo, e a imagem do garden pode invadir o painel vizinho. É isso que faz a abertura ter impacto de revelação em vez de parecer três folhetos colados.</p>
+  </div>
+
+  <h3 style="margin-top:32px">Painel 1 · CAPA</h3>
+  <div class="panel">
+    <p style="font-size:14px;margin-bottom:10px"><strong>Imagem:</strong> render da fachada em golden hour, vertical, ocupando ~70% do painel. <strong>Muito espaço em branco</strong> — a capa de material premium é contida.</p>
+    <div class="copy">[logo Ibiza 20]
+
+Um endereço feito
+para 18 famílias.
+
+ALFENAS · BAIRRO MONTSERRAT
+
+[rodapé, discreto]
+Registro de Incorporação — Cartório de Alfenas/MG</div>
+    <div class="why">Sem preço, sem CTA, sem lista de features na capa. O único trabalho dela é transmitir valor e provocar a abertura. Preço na capa de folder de alto padrão derruba a percepção do produto.</div>
+  </div>
+
+  <h3>Painel 2 · O ENDEREÇO</h3>
+  <div class="panel">
+    <div class="copy">O bairro que Alfenas escolheu para crescer.
+
+O Montserrat reúne o que uma família procura sem
+precisar de carro para tudo: hospital, universidades,
+comércio e praça a poucos minutos de casa — em uma
+das regiões mais valorizadas da cidade.
+
+2 min — Praça Montserrat
+4 min — Hospital Alzira Velano
+4 min — UNIFENAS
+5 min — Supermercado
+6 min — Centro
+8 min — UNIFAL
+
+Esquina da Rua Ibiza com a Rua Zaragoza.</div>
+    <p style="font-size:14px;margin-top:10px"><strong>Visual:</strong> mapa estilizado na paleta da marca ocupando a metade superior. Foto real do entorno (praça, arborização) se houver — foto real do bairro dá credibilidade que render não dá.</p>
+  </div>
+
+  <h3>Painel 3 · QUEM CONSTRÓI (contracapa)</h3>
+  <div class="panel">
+    <div class="copy">FOR Construtora e Incorporadora
+
+Uma construtora que nasceu para fazer em Alfenas o que
+a cidade ainda não tinha: produto de alto padrão com
+documentação impecável e entrega no prazo.
+
+[logos dos parceiros técnicos: Estrugeo · Picta · LN Projetos · Engetop]
+
+FICHA TÉCNICA
+18 apartamentos · 3 pavimentos · elevador
+1, 2 e 3 quartos — 42 a 99 m²
+Gardens privativos de 24 a 48 m² (unidades térreas)
+Varanda gourmet com forro de madeira em todos os andares
+Esquadrias de alumínio · 1 vaga por unidade
+Infraestrutura para carregador de carro elétrico
+
+Agende sua apresentação:
+WhatsApp (35) 99781-7448
+ibiza20.com.br   [QR CODE]
+@forconstrutora
+
+[corpo 6 pt]
+Registro de Incorporação nº [___], Cartório de Registro de Imóveis de Alfenas/MG,
+nos termos da Lei nº 4.591/64. Imagens meramente ilustrativas; móveis e utensílios
+não integram o contrato. Valores e condições sujeitos à tabela vigente.</div>
+  </div>
+
+  <h3 style="margin-top:32px">Painel 4 · O GARDEN <span class="pill b">face interna</span></h3>
+  <div class="panel">
+    <p style="font-size:14px;margin-bottom:10px"><strong>Faixa que atravessa os 3 painéis internos:</strong></p>
+    <div class="copy">Metade já tem dono. As últimas são para quem vai morar aqui.</div>
+    <p style="font-size:14px;margin:14px 0 8px"><strong>Conteúdo do painel:</strong> render do garden em golden hour, grande, invadindo levemente o painel seguinte.</p>
+    <div class="copy">O quintal que não cabia
+em um apartamento.
+
+Até 48 m² de área privativa, só sua. Não é a área comum
+do prédio, não é o playground do condomínio: é o seu
+jardim — do café de sábado ao aniversário que a família
+vai lembrar.
+
+São 6 apartamentos com garden no Ibiza 20, todos no
+térreo. Não existe reposição.</div>
+    <div class="why">O último parágrafo é escassez honesta e verificável: térreo não se constrói depois. É a frase mais persuasiva do folder inteiro justamente porque é um fato de engenharia, não um argumento de venda.</div>
+  </div>
+
+  <h3>Painel 5 · AS PLANTAS</h3>
+  <div class="panel">
+    <div class="copy">Uma planta para cada fase da vida.
+
+1 QUARTO · 42 m² + garden
+Para quem está começando ou para o filho na universidade —
+a 4 minutos da UNIFENAS.
+
+2 QUARTOS · 65 a 78 m²
+Espaço de sobra, manutenção de menos. Garden privativo
+nas unidades térreas.
+
+3 QUARTOS · 97 a 99 m²
+A planta das famílias. Garden de até 48 m² nas térreas,
+varanda gourmet nas superiores.
+
+Todas com varanda gourmet, vaga própria e
+infraestrutura para carro elétrico.</div>
+    <p style="font-size:14px;margin-top:10px"><strong>Visual:</strong> 3 plantas baixas desenhadas na paleta da marca (traço âmbar sobre creme), com metragem e orientação solar. Se houver espaço, mobiliar as plantas — planta mobiliada converte mais porque a pessoa se enxerga morando.</p>
+  </div>
+
+  <h3>Painel 6 · COMO GARANTIR A SUA</h3>
+  <div class="panel">
+    <div class="copy">Simples, e com a segurança de quem faz certo.
+
+1 · Você agenda uma apresentação de 30 minutos —
+    presencial ou por vídeo.
+2 · Conhece as plantas, escolhe sua unidade e recebe
+    a simulação exata do seu pagamento.
+3 · Reserva com um sinal que trava o preço da tabela
+    vigente — e que já faz parte da sua entrada.
+4 · Assina o contrato definitivo com o Registro de
+    Incorporação já em cartório.
+
+ENTRADA DE 10%
+O sinal da reserva já faz parte dela.
+
+Seu apartamento com Registro de Incorporação em cartório:
+a proteção máxima que a lei brasileira oferece a quem
+compra na planta.
+
+Agende agora:
+[QR CODE grande]  WhatsApp (35) 99781-7448</div>
+    <div class="why">Este painel existe para responder a pergunta que trava a decisão em casa: "e como funciona?". Transformar o processo em 4 passos numerados remove o medo do desconhecido, que é a objeção real por trás de "vou pensar".</div>
+  </div>
+</section>
+
+<!-- ========== 5 ========== -->
+<section id="arte">
+  <div class="sec-tag">Seção 5</div>
+  <h2>Direção de arte</h2>
+
+  <div class="grid2">
+    <div class="card">
+      <h3 style="margin-top:0">Paleta</h3>
+      <div style="margin:10px 0">
+        <span class="swatch"><span class="sw" style="background:#A15600"></span> #A15600 · âmbar primário</span>
+        <span class="swatch"><span class="sw" style="background:#FFFBF4"></span> #FFFBF4 · creme (fundo)</span>
+        <span class="swatch"><span class="sw" style="background:#1C1008"></span> #1C1008 · marrom escuro (texto)</span>
+        <span class="swatch"><span class="sw" style="background:#F9942B"></span> #F9942B · laranja (apoio, uso mínimo)</span>
+      </div>
+      <p style="font-size:13.5px">Âmbar é a cor de destaque e de CTA — <strong>não</strong> a cor de fundo de páginas inteiras. Creme domina, âmbar pontua. O laranja de apoio deve aparecer o mínimo possível: em impresso ele briga com o âmbar.</p>
+      <div class="alerta"><strong>Atenção CMYK:</strong> âmbares e laranjas deslocam bastante do RGB para CMYK — costumam sair mais opacos ou mais avermelhados. Definir o equivalente CMYK e <strong>aprovar prova impressa antes da tiragem</strong>. Se o orçamento permitir, Pantone para o âmbar garante consistência entre tiragens.</div>
+    </div>
+    <div class="card">
+      <h3 style="margin-top:0">Tipografia</h3>
+      <p style="font-size:14px"><strong>Lato</strong> (fonte da marca, mesma do site) — uma família só, variando peso.</p>
+      <ul style="padding-left:18px;font-size:13.8px;margin-top:8px">
+        <li>Headline: Lato Black/Bold, tracking levemente negativo</li>
+        <li>Corpo: Lato Regular, mínimo <strong>9 pt</strong> (nunca menos)</li>
+        <li>Eyebrow/labels: Lato Bold, caixa-alta, tracking +120 a +180</li>
+        <li>Legal: Lato Regular 6 pt</li>
+        <li><strong>Máximo 2 pesos por bloco</strong> — hierarquia por tamanho e cor, não por acumular estilos</li>
+      </ul>
+      <p style="font-size:13.5px;margin-top:10px">Entrelinha generosa (1,4–1,6 no corpo) e medida de linha entre 45 e 60 caracteres nos painéis estreitos do folder.</p>
+    </div>
+  </div>
+
+  <div class="card">
+    <h3 style="margin-top:0">Imagens</h3>
+    <ul style="padding-left:18px;font-size:14px">
+      <li><strong>Um render por painel.</strong> Render acumulado vira catálogo de construtora genérica.</li>
+      <li><strong>Garden sempre em golden hour</strong> (luz quente de fim de tarde); <strong>varanda sempre à noite</strong> com luz quente e mesa posta. Essas duas direções de luz vendem o uso, não o imóvel.</li>
+      <li><strong>Se houver foto real do bairro ou da obra, use.</strong> Em cidade pequena, foto real do lugar que a pessoa reconhece vale mais que render perfeito.</li>
+      <li><strong>Nunca banco de imagem genérico</strong> com família sorridente estrangeira — mata a credibilidade local instantaneamente.</li>
+      <li>Resolução mínima <strong>300 dpi no tamanho final</strong>. Render esticado é o erro mais visível em impresso.</li>
+    </ul>
+  </div>
+
+  <div class="card">
+    <h3 style="margin-top:0">O que o alto padrão exige</h3>
+    <ul style="padding-left:18px;font-size:14px">
+      <li><strong>Silêncio.</strong> Margens largas, muito espaço vazio. A tentação de preencher é o inimigo.</li>
+      <li><strong>Nada de estrelinhas, explosões, "OFERTA!", setas chamativas.</strong> Isso comunica desconto, não valor.</li>
+      <li><strong>Logo discreto.</strong> Marca confiante não precisa de logo grande.</li>
+      <li><strong>Alinhamento rigoroso.</strong> Uma grade só, respeitada nos dois lados.</li>
+    </ul>
+  </div>
+</section>
+
+<!-- ========== 6 ========== -->
+<section id="tecnico">
+  <div class="sec-tag">Seção 6</div>
+  <h2>Especificações de produção</h2>
+
+  <table>
+    <tr><th>Item</th><th>Flyer A5</th><th>Folder A3 · 2 dobras</th></tr>
+    <tr><td><strong>Formato final</strong></td><td>148 × 210 mm (retrato)</td><td>420 × 297 mm aberto · 140 × 297 mm fechado</td></tr>
+    <tr><td><strong>Dobra</strong></td><td>—</td><td>Sanfona (Z), 2 dobras paralelas · <strong>vinco obrigatório</strong></td></tr>
+    <tr><td><strong>Cores</strong></td><td>4×4 (frente e verso)</td><td>4×4</td></tr>
+    <tr><td><strong>Papel</strong></td><td>Couché fosco 250 g</td><td>Couché fosco 170–200 g</td></tr>
+    <tr><td><strong>Acabamento</strong></td><td>Laminação fosca + verniz localizado no logo e no garden</td><td>Laminação soft touch + verniz localizado</td></tr>
+    <tr><td><strong>Sangria</strong></td><td>3 mm em todos os lados</td><td>3 mm em todos os lados</td></tr>
+    <tr><td><strong>Margem de segurança</strong></td><td>5 mm</td><td>8 mm nas bordas · <strong>10 mm de cada lado das dobras</strong></td></tr>
+    <tr><td><strong>Tiragem sugerida</strong></td><td>2.000 a 3.000</td><td>300 a 500</td></tr>
+    <tr><td><strong>Arquivo final</strong></td><td colspan="2">PDF/X-1a, CMYK, fontes convertidas em curvas, marcas de corte e dobra</td></tr>
+  </table>
+
+  <div class="alerta">
+    <strong>Acima de 200 g o vinco não é opcional</strong> — sem ele o couché racha na dobra e a peça chega quebrada no cliente. Confirmar com a gráfica antes de fechar a gramatura.
+  </div>
+
+  <div class="card blue" style="margin-top:16px">
+    <h3 style="margin-top:0">QR code — configuração que a maioria erra</h3>
+    <ul style="padding-left:18px;font-size:14px">
+      <li><strong>Aponte para o site, não direto para o WhatsApp.</strong> Quem passa pelo site entra no Pixel e vira audiência de retargeting — o mesmo lead volta a ser alcançado por anúncio depois. QR direto para WhatsApp perde esse rastro. O WhatsApp fica impresso ao lado, para quem prefere ligar.</li>
+      <li><strong>Com UTM para medir o impresso:</strong><br>
+        Flyer: <code>ibiza20.com.br/?utm_source=flyer_a5&utm_medium=impresso&utm_campaign=lancamento</code><br>
+        Folder: <code>ibiza20.com.br/?utm_source=folder_a3&utm_medium=impresso&utm_campaign=lancamento</code></li>
+      <li>Tamanho mínimo <strong>2,5 cm</strong>; preto sobre fundo claro; <strong>testar impresso</strong> (QR sobre imagem ou em âmbar claro costuma falhar na leitura).</li>
+    </ul>
+    <div class="why">Com UTMs diferentes por peça, em 30 dias sabemos qual impresso realmente trouxe gente — e a próxima tiragem vira decisão com dado, não com achismo.</div>
+  </div>
+</section>
+
+<!-- ========== 7 ========== -->
+<section id="distribuicao">
+  <div class="sec-tag">Seção 7</div>
+  <h2>Distribuição — onde cada peça vive</h2>
+  <p class="sec-lead">Impresso em cidade de 80 mil habitantes é mídia de relacionamento, não de massa. Onde a peça é entregue muda mais o resultado do que o design dela.</p>
+
+  <div class="grid2">
+    <div class="card green">
+      <h3 style="margin-top:0">Flyer A5 — pontos curados</h3>
+      <ul style="padding-left:18px;font-size:14px">
+        <li>Consultórios médicos e odontológicos (sala de espera = tempo ocioso + perfil de renda)</li>
+        <li>Escritórios de advocacia e contabilidade</li>
+        <li>Academias e estúdios de pilates</li>
+        <li>Cafés e restaurantes do centro</li>
+        <li>Salões de beleza e barbearias premium</li>
+        <li>Imobiliárias parceiras (Imoarte, MIB) e a carteira dos corretores</li>
+        <li>Mão a mão do corretor — sempre com uma frase, nunca em silêncio</li>
+      </ul>
+    </div>
+    <div class="card red">
+      <h3 style="margin-top:0">Onde <em>não</em> distribuir</h3>
+      <ul class="no">
+        <li>Semáforo e panfletagem de rua</li>
+        <li>Para-brisa de carro estacionado</li>
+        <li>Caixa de correio em massa</li>
+        <li>Qualquer lugar onde o papel vira lixo em 10 segundos</li>
+      </ul>
+      <div class="why">Panfleto de rua comunica "produto que precisa se oferecer". Para um empreendimento de R$ 280 a 665 mil, isso destrói em um dia a percepção de valor que a campanha inteira construiu.</div>
+    </div>
+  </div>
+
+  <div class="card gold">
+    <h3 style="margin-top:0">Folder A3 — entrega controlada</h3>
+    <p style="font-size:14px">Nunca distribuído solto. Entregue <strong>em mãos, ao final da apresentação de 30 minutos</strong>, idealmente com a unidade de interesse já marcada a caneta pelo corretor e a simulação impressa junto. O gesto de personalizar na frente do cliente é o que transforma um folheto em compromisso.</p>
+    <p style="font-size:14px;margin-top:8px">Segunda função: <strong>ficar com as imobiliárias parceiras</strong> para que o corretor tenha material físico ao apresentar a terceiros.</p>
+  </div>
+</section>
+
+<!-- ========== 8 ========== -->
+<section id="checklist">
+  <div class="sec-tag">Seção 8 · Final</div>
+  <h2>Checklist antes de mandar para a gráfica</h2>
+
+  <div class="card">
+    <h3 style="margin-top:0">Conteúdo</h3>
+    <ul class="check">
+      <li>O valor do "a partir de" corresponde à menor unidade <strong>ainda disponível</strong></li>
+      <li>Nenhuma menção a investidor, SCP, Fase Zero, rentabilidade ou valorização</li>
+      <li>Nenhum número exato de unidades restantes (só "metade já tem dono")</li>
+      <li>Número do Registro de Incorporação preenchido (hoje está como <code>[___]</code>)</li>
+      <li>Metragens conferidas com o memorial: 42,02 · 65,55 · 77,60 · 96,98 · 97,39 · 98,37 · 99,08 m²</li>
+      <li>WhatsApp (35) 99781-7448 e ibiza20.com.br corretos em todas as peças</li>
+      <li>Texto legal presente e legível (mín. 6 pt)</li>
+    </ul>
+  </div>
+
+  <div class="card">
+    <h3 style="margin-top:0">Técnico</h3>
+    <ul class="check">
+      <li>QR code testado <strong>impresso</strong> (não só na tela), com UTM correta por peça</li>
+      <li>Sangria de 3 mm e marcas de corte e dobra no PDF</li>
+      <li>Nada importante a menos de 10 mm das dobras</li>
+      <li>Todas as imagens em 300 dpi no tamanho final, CMYK</li>
+      <li>Fontes convertidas em curvas</li>
+      <li>Prova impressa aprovada — <strong>especialmente a cor âmbar</strong></li>
+      <li>Face interna do folder conferida aberta: a faixa atravessa os 3 painéis sem quebra</li>
+    </ul>
+  </div>
+
+  <div class="card gold">
+    <h3 style="margin-top:0">As 3 coisas que mais importam</h3>
+    <p style="font-size:14.5px">Se a designer só puder levar três instruções desta página:</p>
+    <p style="font-size:14.5px;margin-top:10px"><strong>1.</strong> O A5 tem UMA mensagem e muito espaço vazio; o A3 é que carrega a informação. Não são a mesma peça em dois tamanhos.<br>
+    <strong>2.</strong> Nada de linguagem de investidor e nenhum número que expire — "metade já tem dono" é o único dado de prova social no papel.<br>
+    <strong>3.</strong> O garden é o herói visual das duas peças. É a única coisa que Alfenas não tem em nenhum outro apartamento.</p>
+  </div>
+</section>
+
+</div>
+<div class="footer">
+  Ibiza 20 · FOR Construtora e Incorporadora · Briefing de impressos · fase morador · jul/2026<br>
+  Complementa a <a href="estrategia.html" style="color:#8B3A2A">estratégia completa de lançamento</a>.
+</div>
+</body>
+</html>
